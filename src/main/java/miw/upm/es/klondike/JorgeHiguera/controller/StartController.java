@@ -1,7 +1,8 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller;
+package miw.upm.es.klondike.JorgeHiguera.controller;
 
-public interface StartController extends OperationalController {
-
-	public void buildData();
+public interface StartController extends OperationController, 
+PresenterController {
+	
+	public void start();
 	
 }
