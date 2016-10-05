@@ -1,5 +1,10 @@
 package miw.upm.es.klondike.JorgeHiguera;
 
-public interface View {
+import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
+import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
+
+public interface View extends OperationControllerVisitor{
+	
+	public void interact(OperationController operationalController);
 
 }

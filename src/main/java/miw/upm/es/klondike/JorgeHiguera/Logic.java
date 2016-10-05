@@ -1,9 +1,9 @@
 package miw.upm.es.klondike.JorgeHiguera;
 
-import miw.upm.es.Klondike.JorgeHiguera.controller.OperationalController;
+import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
 
 public interface Logic {
 
-	public OperationalController getOperationalController();
+	public OperationController getOperationController();
 	
 }
