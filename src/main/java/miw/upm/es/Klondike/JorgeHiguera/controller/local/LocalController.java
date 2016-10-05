@@ -1,0 +1,56 @@
+package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+
+import java.util.List;
+import java.util.Map;
+
+import miw.upm.es.klondike.JorgeHiguera.controller.Error;
+import miw.upm.es.klondike.JorgeHiguera.model.Card;
+import miw.upm.es.klondike.JorgeHiguera.model.Game;
+import miw.upm.es.klondike.JorgeHiguera.model.Suit;
+import miw.upm.es.klondike.JorgeHiguera.model.State;
+
+public class LocalController {
+
+	private Game game;
+	
+	public LocalController(Game game){
+		assert game != null;
+		this.game = game;
+	}
+	
+	public void moveFromDeckToDiscard(){
+		game.moveFromDeckToDiscard();
+	}
+	
+	public Error validateEmptyDeck(){
+		if(!game.isEmptyDeck()){
+			return Error.DECK_NO_EMPTY;
+		}
+		return null;
+	}
+	
+	public List<Card> getDeck(){
+		return game.getDeck();
+	}
+	
+	public List<Card> getDiscard(){
+		return game.getDiscard();
+	}
+	
+	public Map<Integer, List<Card>> getStrights(){
+		return game.getStrights();
+	}
+	
+	public Map<Suit, List<Card>> getSuits(){
+		return game.getSuits();
+	}
+	
+	public State getState(){
+		return game.getState();
+	}
+	
+	public void setState(State state){
+		game.setState(state);
+	}
+	
+}
