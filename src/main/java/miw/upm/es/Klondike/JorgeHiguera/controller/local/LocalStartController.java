@@ -21,7 +21,7 @@ public class LocalStartController extends LocalOperationController implements St
 	public void start() {
 		assert this.getState() == State.INITIAL;
 		builder.build();
-		this.setState(State.IN_GAME);
+		this.setState(State.ASK_OPERATION);
 	}
 
 	@Override

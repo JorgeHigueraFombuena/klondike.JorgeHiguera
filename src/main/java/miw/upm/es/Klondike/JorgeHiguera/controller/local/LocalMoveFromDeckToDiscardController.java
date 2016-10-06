@@ -1,12 +1,12 @@
 package miw.upm.es.Klondike.JorgeHiguera.controller.local;
 
-import miw.upm.es.klondike.JorgeHiguera.controller.ColocateControllerVisitor;
+import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 
-public abstract class LocalMoveFromDeckToDiscardController extends LocalColocateController
+public class LocalMoveFromDeckToDiscardController extends LocalPlaceCardController
 		implements MoveFromDeckToDiscardController {
 	
 	public LocalMoveFromDeckToDiscardController(Game game) {
@@ -14,7 +14,7 @@ public abstract class LocalMoveFromDeckToDiscardController extends LocalColocate
 	}
 
 	@Override
-	public void accept(ColocateControllerVisitor colocateControllerVisitor) {
+	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
 		colocateControllerVisitor.visit(this);
 	}
 

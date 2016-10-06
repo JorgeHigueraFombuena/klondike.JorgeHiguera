@@ -1,26 +1,24 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
-import miw.upm.es.klondike.JorgeHiguera.controller.ColocateController;
-import miw.upm.es.klondike.JorgeHiguera.controller.ColocateControllerVisitor;
+import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
+import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToDeckController;
+import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
 
-public class GameView implements ColocateControllerVisitor{
+public class GameView implements PlaceCardControllerVisitor{
 
-	void interact(ColocateController colocateController){
-		colocateController.accept(this);
+	public void interact(PlaceCardController placeCardController){
+		placeCardController.accept(this);
 	}
-
+	
 	@Override
 	public void visit(MoveFromDeckToDiscardController moveFromDeckToDiscardController) {
-		// TODO Auto-generated method stub
-		
+		moveFromDeckToDiscardController.accept(this);
 	}
 
 	@Override
 	public void visit(MoveFromDiscardToDeckController moveFromDiscardToDeckController) {
-		// TODO Auto-generated method stub
-		
+		moveFromDiscardToDeckController.accept(this);
 	}
-	
 }

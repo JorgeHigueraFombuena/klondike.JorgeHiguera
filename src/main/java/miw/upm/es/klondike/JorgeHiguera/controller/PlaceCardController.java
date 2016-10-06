@@ -1,10 +1,10 @@
 package miw.upm.es.klondike.JorgeHiguera.controller;
 
-public interface ColocateController extends OperationController, 
+public interface PlaceCardController extends OperationController, 
 	PresenterController
 {
 
-	void accept(ColocateControllerVisitor colocateControllerVisitor);
+	void accept(PlaceCardControllerVisitor colocateControllerVisitor);
 	
 	void move();
 	

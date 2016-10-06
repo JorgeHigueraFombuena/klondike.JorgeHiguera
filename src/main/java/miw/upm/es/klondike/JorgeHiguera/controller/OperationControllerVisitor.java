@@ -4,7 +4,9 @@ public interface OperationControllerVisitor {
 	
 	public void visit(StartController startController);
 	
-	public void visit(ColocateController colocateController);
+	public void visit(PlaceCardController colocateController);
+
+	public void visit(AskOperationController AskOperationController);
 
 
 }

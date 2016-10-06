@@ -1,6 +1,6 @@
 package miw.upm.es.klondike.JorgeHiguera.controller;
 
-public interface ColocateControllerVisitor {
+public interface PlaceCardControllerVisitor {
 
 	public void visit(MoveFromDeckToDiscardController moveFromDeckToDiscardController);
 	

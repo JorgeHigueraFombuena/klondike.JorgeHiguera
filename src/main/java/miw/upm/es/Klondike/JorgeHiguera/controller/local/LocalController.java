@@ -6,6 +6,7 @@ import java.util.Map;
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
+import miw.upm.es.klondike.JorgeHiguera.model.Options;
 import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 import miw.upm.es.klondike.JorgeHiguera.model.State;
 
@@ -51,6 +52,14 @@ public class LocalController {
 	
 	public void setState(State state){
 		game.setState(state);
+	}
+	
+	void changeAskOption(int option){
+		game.changeAskOption(option);
+	}
+	
+	Options getSelectedOption(){
+		return game.getOptionSelected();
 	}
 	
 }

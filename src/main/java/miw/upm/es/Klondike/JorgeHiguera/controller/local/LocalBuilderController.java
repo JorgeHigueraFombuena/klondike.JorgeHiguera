@@ -8,15 +8,19 @@ import java.util.Map;
 import java.util.Random;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.BuilderController;
+import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
 import miw.upm.es.klondike.JorgeHiguera.model.Board;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
+import miw.upm.es.klondike.JorgeHiguera.model.Options;
 import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 
 public class LocalBuilderController implements BuilderController{
 
 	private Game game;
 
+	private LocalOperationController[] operations;
+	
 	public LocalBuilderController(Game game){
 		assert game != null;
 		this.game = game;
@@ -26,7 +30,25 @@ public class LocalBuilderController implements BuilderController{
 		List<Card> deck = initDeck();
 		game.setDeck(deck);
 		game.setStrights(initStrights(deck));
-		
+		initAskOperation();
+	}
+
+	private void initAskOperation() {
+		operations = new LocalOperationController[Options.values().length];
+		for(Options option : Options.values()){
+			operations[option.ordinal()] = getMoveController(option);
+		}
+	}
+	
+	private LocalOperationController getMoveController(Options option){
+		switch (option) {
+		case FROM_DECK_TO_DISCARD:
+			return 	new LocalMoveFromDeckToDiscardController(game);
+		case FROM_DISCARD_TO_DECK:
+			return	new LocalMoveFromDiscardToDeckController(game);
+		default:
+			return null;
+		}
 	}
 
 	private Map<Integer, List<Card>> initStrights(List<Card> deck){
@@ -65,5 +87,14 @@ public class LocalBuilderController implements BuilderController{
 			}
 		}
 		return list;
+	}
+	
+	public LocalOperationController getOperationController(Options option){
+		//TODO: elegir opcion
+		return operations[option.ordinal()];
+	}
+
+	public OperationController getAskOperationController() {
+		return new LocalAskOperationController(game);
 	}
 }

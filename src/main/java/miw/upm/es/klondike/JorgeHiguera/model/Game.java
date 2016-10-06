@@ -8,6 +8,8 @@ public class Game {
 	private State state;
 	
 	private Board board;
+	
+	private Options optionSelected;
 
 	public Game(){
 		state = State.INITIAL;
@@ -41,6 +43,10 @@ public class Game {
 	public State getState(){
 		return state;
 	}
+	
+	public Options getOptionSelected(){
+		return optionSelected;
+	}
 
 	public void setDeck(List<Card> deck) {
 		board.setDeck(deck);
@@ -52,6 +58,10 @@ public class Game {
 
 	public void setState(State state) {
 		this.state = state;;
+	}
+
+	public void changeAskOption(int option) {
+		optionSelected = Options.values()[option];
 	}
 
 }
