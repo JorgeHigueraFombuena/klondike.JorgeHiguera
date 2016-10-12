@@ -23,11 +23,26 @@ public class LocalController {
 		game.moveFromDeckToDiscard();
 	}
 	
+	public void moveFromDiscardToDeck(){
+		game.moveFromDiscardToDeck();
+	}
+	
 	public Error validateEmptyDeck(){
 		if(!game.isEmptyDeck()){
 			return Error.DECK_NO_EMPTY;
 		}
-		return null;
+		return Error.DECK_EMPTY;
+	}
+	
+	public Error validateEmptyDiscard(){
+		if(!game.isEmptyDiscard()){
+			return Error.DISCARD_EMPTY;
+		}
+		return Error.DISCARD_NO_EMPTY;
+	}
+	
+	public Options getOptionSelected(){
+		return game.getOptionSelected();
 	}
 	
 	public List<Card> getDeck(){

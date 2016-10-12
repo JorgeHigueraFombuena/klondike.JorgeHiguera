@@ -12,5 +12,6 @@ implements PlaceCardController {
 	public LocalPlaceCardController(Game game) {
 		super(game);
 	}
+	
 
 }

@@ -14,11 +14,18 @@ public class GameView implements PlaceCardControllerVisitor{
 	
 	@Override
 	public void visit(MoveFromDeckToDiscardController moveFromDeckToDiscardController) {
-		moveFromDeckToDiscardController.accept(this);
+		moveFromDeckToDiscardController.move();
+		this.showBoard(moveFromDeckToDiscardController);
 	}
 
 	@Override
 	public void visit(MoveFromDiscardToDeckController moveFromDiscardToDeckController) {
-		moveFromDiscardToDeckController.accept(this);
+		moveFromDiscardToDeckController.move();
+		this.showBoard(moveFromDiscardToDeckController);
+	}
+	
+	private void showBoard(PlaceCardController placeCardController){
+		new BoardView(placeCardController).write();
+		placeCardController.askOption();
 	}
 }

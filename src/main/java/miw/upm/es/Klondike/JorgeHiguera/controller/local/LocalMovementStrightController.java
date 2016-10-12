@@ -4,7 +4,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.MovementControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.MovementStrightController;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 
-public abstract class LocalMovementStrightController extends LocalMovementController implements MovementStrightController {
+public abstract class LocalMovementStrightController extends LocalPlaceCardController implements MovementStrightController {
 
 	public LocalMovementStrightController(Game game) {
 		super(game);

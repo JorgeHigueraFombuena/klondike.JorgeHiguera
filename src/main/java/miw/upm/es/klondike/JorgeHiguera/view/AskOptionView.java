@@ -5,6 +5,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.AskOperationControllerVisitor
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.StartController;
 import miw.upm.es.klondike.JorgeHiguera.model.Options;
+import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 import miw.upm.es.klondike.JorgeHiguera.utils.LimitedIntDialog;
 
@@ -14,7 +15,16 @@ public class AskOptionView implements AskOperationControllerVisitor {
 	
 	@Override
 	public void visit(AskOperationController askOperationController) {
-		int option = new LimitedIntDialog("Opción?", 1, Options.values().length).read();
+		int option = -1;
+		Error error = null;
+		do{
+			option = new LimitedIntDialog("Opción?", 1, Options.values().length).read() - 1;
+			error = askOperationController.isValidOptionSelected(option);
+			if(error != null){
+				io.writeln("Error: " + error);
+			}
+		}while(error != null);
+		
 		askOperationController.askFor(option);
 		askOperationController.changeState();
 	}

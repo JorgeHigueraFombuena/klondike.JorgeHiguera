@@ -25,7 +25,7 @@ public class LocalMoveFromDeckToDiscardController extends LocalPlaceCardControll
 
 	@Override
 	public void move() {
-		assert super.validateEmptyDeck() == null;
+		assert super.validateEmptyDeck() == Error.DECK_NO_EMPTY;
 		super.moveFromDeckToDiscard();
 	}
 

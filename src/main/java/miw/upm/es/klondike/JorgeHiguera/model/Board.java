@@ -42,6 +42,7 @@ public class Board {
 		List<Card> tempList = new ArrayList<Card>();
 		for(int i = 0; i < deck.size() 
 				&& i < NUM_CARDS_PER_DRAW; i++){
+			deck.get(i).setFaceDown(false);
 			tempList.add(deck.get(i));
 		}
 		deck.removeAll(tempList);
@@ -50,6 +51,7 @@ public class Board {
 	
 	public void moveFromDiscardToDeck(){
 		for(int i = discard.size() - 1; i >= 0; i--){
+			discard.get(i).setFaceDown(true);
 			deck.add(discard.get(i));
 		}
 		discard.clear();
@@ -76,11 +78,15 @@ public class Board {
 		return suits;
 	}
 
-	public void setDeck(List<Card> deck2) {
+	public void setDeck(List<Card> deck) {
 		this.deck = deck;
 	}
 
 	public void setStrights(Map<Integer, List<Card>> strights) {
 		this.strights = strights;
+	}
+
+	public boolean isEmptyDiscard() {
+		return discard.isEmpty();
 	}
 }

@@ -4,4 +4,8 @@ public interface OperationController {
 
 	void accept(OperationControllerVisitor operationalControllerVisitor);
 	
+	void changeState();
+	
+	void askOption();
+	
 }

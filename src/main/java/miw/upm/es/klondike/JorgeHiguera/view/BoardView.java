@@ -28,6 +28,7 @@ public class BoardView {
 
 	private void writeDeck(List<Card> deck) {
 		IO io = new IO();
+		io.writeln("======================================");
 		io.write("Baraja: ");
 		if(deck.isEmpty()){
 			io.writeEmpty();

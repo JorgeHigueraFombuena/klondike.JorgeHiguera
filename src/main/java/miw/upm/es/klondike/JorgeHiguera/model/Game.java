@@ -64,4 +64,12 @@ public class Game {
 		optionSelected = Options.values()[option];
 	}
 
+	public boolean isEmptyDiscard() {
+		return board.isEmptyDiscard();
+	}
+
+	public void moveFromDiscardToDeck() {
+		board.moveFromDiscardToDeck();
+	}
+
 }

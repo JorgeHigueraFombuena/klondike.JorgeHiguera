@@ -2,6 +2,8 @@ package miw.upm.es.klondike.JorgeHiguera.view;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.MovementController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MovementControllerVisitor;
+import miw.upm.es.klondike.JorgeHiguera.controller.MovementStrightController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MovementSuitController;
 
 public abstract class MovementView implements MovementControllerVisitor {
 

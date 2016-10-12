@@ -6,11 +6,12 @@ import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 import miw.upm.es.klondike.JorgeHiguera.model.Options;
 import miw.upm.es.klondike.JorgeHiguera.model.State;
+import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 
 public class LocalAskOperationController extends LocalOperationController 
 implements AskOperationController {
 
-	
+
 	public LocalAskOperationController(Game game) {
 		super(game);
 	}
@@ -22,7 +23,6 @@ implements AskOperationController {
 
 	@Override
 	public void accept(OperationControllerVisitor operationalControllerVisitor) {
-		// TODO Auto-generated method stub
 		operationalControllerVisitor.visit(this);
 	}
 
@@ -32,13 +32,30 @@ implements AskOperationController {
 	}
 
 	@Override
-	public void changeState() {
-		if(this.getSelectedOption() != Options.EXIT){
-			this.setState(State.IN_GAME);
+	public Error isValidOptionSelected(int option) {
+		Options op = Options.values()[option];
+		Error error = null;
+		switch (op) {
+		case FROM_DECK_TO_DISCARD:
+			return super.validateEmptyDeck() == Error.DECK_EMPTY ? 
+					Error.DECK_EMPTY : null;
+		case FROM_DISCARD_TO_DECK:
+			error = super.validateEmptyDiscard();
+			if(error == Error.DISCARD_EMPTY){
+				return error;
+			}
+			return super.validateEmptyDeck() == Error.DECK_NO_EMPTY ?
+					Error.DECK_NO_EMPTY : null;
+		case FROM_DISCARD_TO_STRIGHT:
+			error = super.validateEmptyDiscard();
+			if(error == Error.DISCARD_EMPTY){
+				return error;
+			}
+			return null;
+		default:
+			break;
 		}
-		else{
-			this.setState(State.FINISHED);
-		}
+		return null;
 	}
 
 }

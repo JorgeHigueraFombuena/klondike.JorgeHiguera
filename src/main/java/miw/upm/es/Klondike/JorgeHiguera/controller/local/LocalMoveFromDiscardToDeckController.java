@@ -1,5 +1,6 @@
 package miw.upm.es.Klondike.JorgeHiguera.controller.local;
 
+import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToDeckController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
@@ -19,8 +20,7 @@ implements MoveFromDiscardToDeckController{
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
-		
+		super.moveFromDiscardToDeck();
 	}
 
 	@Override
