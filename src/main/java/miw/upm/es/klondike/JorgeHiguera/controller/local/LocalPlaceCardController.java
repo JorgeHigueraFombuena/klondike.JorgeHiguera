@@ -10,6 +10,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 import miw.upm.es.klondike.JorgeHiguera.model.PlaceOfCard;
+import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 
 public abstract class LocalPlaceCardController extends LocalOperationController 
 implements PlaceCardController {
@@ -33,10 +34,20 @@ implements PlaceCardController {
 			if(placed == null && toPlace.isKing()){
 				return null;
 			}
+			else if(placed != null && placed.isFaceDown() && toPlace.isKing()){
+				return null;
+			}
 			else if(placed != null && !toPlace.getSuit().equals(placed.getSuit())
 					&& placed.getNumber() - toPlace.getNumber() == 1){
 				return null;
 			}
+		}
+		return Error.MOVEMENT_NOT_PERMITED;
+	}
+
+	public Error faceUpPermited(Card toFaceUp) {
+		if(toFaceUp != null && toFaceUp.isFaceDown()){
+			return null;
 		}
 		return Error.MOVEMENT_NOT_PERMITED;
 	}

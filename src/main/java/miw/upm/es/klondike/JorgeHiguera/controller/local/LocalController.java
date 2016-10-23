@@ -114,8 +114,8 @@ public class LocalController {
 		this.setState(State.ASK_OPERATION);
 	}
 	
-	public Card getFirstCardFromSuit(Card toPlace){
-		return game.getFirstCardFromSuit(toPlace);
+	public Card getFirstCardFromSuit(Suit suit){
+		return game.getFirstCardFromSuit(suit);
 	}
 	
 	public void moveFromDiscardToSuit(Card toPlace){
@@ -125,6 +125,17 @@ public class LocalController {
 	
 	public void moveFromStrightToSuit(int originStright) {
 		game.moveFromStrightToSuit(originStright);
+		askOption();
+	}
+	
+	public void moveFromSuitToStright(Suit originSuit, int targetStright) {
+		game.moveFromSuitToStright(originSuit, targetStright);
+		askOption();
+	}
+	
+	public void faceUpCard(int targetStright) {
+		game.faceUpCard(targetStright);
+		askOption();
 	}
 	
 }

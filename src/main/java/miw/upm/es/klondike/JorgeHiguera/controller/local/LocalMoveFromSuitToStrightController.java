@@ -1,17 +1,18 @@
 package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
-import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToSuitController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromSuitToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 import miw.upm.es.klondike.JorgeHiguera.model.PlaceOfCard;
+import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 
-public class LocalMoveFromDiscardToSuitController extends LocalPlaceCardController
-		implements MoveFromDiscardToSuitController {
+public class LocalMoveFromSuitToStrightController extends LocalPlaceCardController
+		implements MoveFromSuitToStrightController {
 
-	public LocalMoveFromDiscardToSuitController(Game game) {
+	public LocalMoveFromSuitToStrightController(Game game) {
 		super(game);
 	}
 
@@ -27,12 +28,12 @@ public class LocalMoveFromDiscardToSuitController extends LocalPlaceCardControll
 	}
 
 	@Override
-	public Error move() {
-		Card toPlace = super.getFirstCardFromDiscard();
-		Card placed = super.getFirstCardFromSuit(toPlace.getSuit());
-		Error error = super.movedPermited(toPlace, placed, PlaceOfCard.SUIT);
+	public Error move(Suit originSuit, int targetStright) {
+		Card toPlace = super.getFirstCardFromSuit(originSuit);
+		Card placed = super.getFirstCardFromStright(targetStright);
+		Error error = super.movedPermited(toPlace, placed, PlaceOfCard.STRIGHT);
 		if(error == null){
-			super.moveFromDiscardToSuit(toPlace);
+			super.moveFromSuitToStright(originSuit, targetStright);
 		}
 		return error;
 	}

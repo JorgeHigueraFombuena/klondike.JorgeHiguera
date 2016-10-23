@@ -92,8 +92,8 @@ public class Game {
 		board.moveFromStrightToStright(originStright, targetStright);
 	}
 
-	public Card getFirstCardFromSuit(Card toPlace) {
-		return board.getFirstCardFromSuit(toPlace);
+	public Card getFirstCardFromSuit(Suit suit) {
+		return board.getFirstCardFromSuit(suit);
 	}
 
 	public void moveFromDiscardToSuit(Card toPlace) {
@@ -102,6 +102,14 @@ public class Game {
 
 	public void moveFromStrightToSuit(int originStright) {
 		board.moveFromStrightToSuit(originStright);
+	}
+
+	public void moveFromSuitToStright(Suit originSuit, int targetStright) {
+		board.moveFromSuitToStright(originSuit, targetStright);
+	}
+
+	public void faceUpCard(int targetStright) {
+		board.faceUpCard(targetStright);
 	}
 
 }

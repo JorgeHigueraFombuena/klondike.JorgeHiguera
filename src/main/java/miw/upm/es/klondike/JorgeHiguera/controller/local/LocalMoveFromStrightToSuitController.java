@@ -23,14 +23,13 @@ public class LocalMoveFromStrightToSuitController extends LocalPlaceCardControll
 
 	@Override
 	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
-		// TODO Auto-generated method stub
-
+		colocateControllerVisitor.visit(this);
 	}
 
 	@Override
 	public Error move(int originStright) {
 		Card toPlace = super.getFirstCardFromStright(originStright);
-		Card placed = super.getFirstCardFromSuit(toPlace);
+		Card placed = super.getFirstCardFromSuit(toPlace.getSuit());
 		Error error = super.movedPermited(toPlace, placed, PlaceOfCard.SUIT);
 		if(error == null){
 			super.moveFromStrightToSuit(originStright);
@@ -40,8 +39,7 @@ public class LocalMoveFromStrightToSuitController extends LocalPlaceCardControll
 
 	@Override
 	public void accept(OperationControllerVisitor operationalControllerVisitor) {
-		// TODO Auto-generated method stub
-
+		operationalControllerVisitor.visit(this);
 	}
 
 }

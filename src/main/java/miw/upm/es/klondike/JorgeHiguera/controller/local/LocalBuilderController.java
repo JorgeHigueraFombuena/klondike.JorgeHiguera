@@ -53,6 +53,12 @@ public class LocalBuilderController implements BuilderController{
 			return new LocalMoveFromStrightToStrightController(game);
 		case FROM_DISCARD_TO_SUIT:
 			return new LocalMoveFromDiscardToSuitController(game);
+		case FROM_STRIGHT_TO_SUIT:
+			return new LocalMoveFromStrightToSuitController(game);
+		case FROM_SUIT_TO_STRIGHT:
+			return new LocalMoveFromSuitToStrightController(game);
+		case FACE_UP_IN_STRIGHT:
+			return new LocalFaceUpInStrightController(game);
 		default:
 			return null;
 		}

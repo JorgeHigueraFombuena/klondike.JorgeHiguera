@@ -7,14 +7,14 @@ public class MoveStrightMovementView {
 	public int getTargetStright(){
 		PositionView positionView = new PositionView(
 				"A qué escalera?", "Escalera?", Board.NUM_STRIGHTS);
-		positionView.read();
+		positionView.readInt();
 		return positionView.getPosition();
 	}
 
 	public int getOriginStright() {
 		PositionView positionView = new PositionView(
 				"Desde qué escalera?", "Escalera?", Board.NUM_STRIGHTS);
-		positionView.read();
+		positionView.readInt();
 		return positionView.getPosition();
 	}
 

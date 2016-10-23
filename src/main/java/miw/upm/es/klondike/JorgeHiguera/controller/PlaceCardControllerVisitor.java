@@ -13,4 +13,8 @@ public interface PlaceCardControllerVisitor {
 	public void visit(MoveFromDiscardToSuitController moveFromDiscardToSuitController);
 	
 	public void visit(MoveFromStrightToSuitController moveFromStrightToSuitController);
+	
+	public void visit(MoveFromSuitToStrightController moveFromSuitToStrightController);
+	
+	public void visit(FaceUpCardInStrightController faceUpCardInStrightController);
 }

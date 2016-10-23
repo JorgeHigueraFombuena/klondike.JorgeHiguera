@@ -130,12 +130,12 @@ public class Board {
 		strights.get(targetStright).add(toPlace);
 	}
 
-	public Card getFirstCardFromSuit(Card toPlace) {
-		if (suits.get(toPlace.getSuit()).isEmpty()){
+	public Card getFirstCardFromSuit(Suit suit) {
+		if (suits.get(suit).isEmpty()){
 			return null;
 		}
 		else {
-			return suits.get(toPlace.getSuit()).get(suits.get(toPlace.getSuit()).size()-1);
+			return suits.get(suit).get(suits.get(suit).size()-1);
 		}
 	}
 
@@ -149,5 +149,15 @@ public class Board {
 		Card toPlace = strights.get(originStright).get(strights.get(originStright).size() -1);
 		strights.get(originStright).remove(toPlace);
 		suits.get(toPlace.getSuit()).add(toPlace);
+	}
+
+	public void moveFromSuitToStright(Suit originSuit, int targetStright) {
+		Card toPlace = suits.get(originSuit).get(suits.get(originSuit).size()-1);
+		toPlace.setPlaceOfCard(PlaceOfCard.STRIGHT);
+		strights.get(targetStright).add(toPlace);
+	}
+
+	public void faceUpCard(int targetStright) {
+		strights.get(targetStright).get(strights.get(targetStright).size() - 1).setFaceDown(false);
 	}
 }
