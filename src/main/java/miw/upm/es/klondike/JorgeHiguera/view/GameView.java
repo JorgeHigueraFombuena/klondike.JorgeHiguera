@@ -7,6 +7,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToDeckControll
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToSuitController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToStrightController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToSuitController;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
@@ -31,7 +32,6 @@ public class GameView implements PlaceCardControllerVisitor{
 
 	@Override
 	public void visit(MoveFromDiscardToStrightController moveFromDiscardToStrightController) {
-		// TODO Auto-generated method stub
 		MoveStrightMovementView view = new MoveStrightMovementView();
 		Error error = null;
 		do{
@@ -68,5 +68,19 @@ public class GameView implements PlaceCardControllerVisitor{
 	public void visit(MoveFromDiscardToSuitController moveFromDiscardToSuitController) {
 		moveFromDiscardToSuitController.move();
 		this.showBoard(moveFromDiscardToSuitController);
+	}
+
+	@Override
+	public void visit(MoveFromStrightToSuitController moveFromStrightToSuitController) {
+		MoveStrightMovementView view = new MoveStrightMovementView();
+		Error error = null;
+		do{
+			int originTarget = view.getTargetStright();
+			error = moveFromStrightToSuitController.move(originTarget);
+			if(error != null){
+				new IO().writeln("Error: " + error.toString());
+			}
+		} while(error != null);
+		this.showBoard(moveFromStrightToSuitController);
 	}
 }

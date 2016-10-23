@@ -100,4 +100,8 @@ public class Game {
 		board.moveFromDiscardToSuit(toPlace);
 	}
 
+	public void moveFromStrightToSuit(int originStright) {
+		board.moveFromStrightToSuit(originStright);
+	}
+
 }

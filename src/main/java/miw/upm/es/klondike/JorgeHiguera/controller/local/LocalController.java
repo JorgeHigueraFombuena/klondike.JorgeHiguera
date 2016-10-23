@@ -123,4 +123,8 @@ public class LocalController {
 		askOption();
 	}
 	
+	public void moveFromStrightToSuit(int originStright) {
+		game.moveFromStrightToSuit(originStright);
+	}
+	
 }

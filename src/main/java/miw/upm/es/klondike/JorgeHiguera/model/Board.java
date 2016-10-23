@@ -144,4 +144,10 @@ public class Board {
 		toPlace.setPlaceOfCard(PlaceOfCard.SUIT);
 		suits.get(toPlace.getSuit()).add(toPlace);
 	}
+
+	public void moveFromStrightToSuit(int originStright) {
+		Card toPlace = strights.get(originStright).get(strights.get(originStright).size() -1);
+		strights.get(originStright).remove(toPlace);
+		suits.get(toPlace.getSuit()).add(toPlace);
+	}
 }
