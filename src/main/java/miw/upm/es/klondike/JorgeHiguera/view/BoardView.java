@@ -72,14 +72,19 @@ public class BoardView {
 			io.writeln();
 		}
 	}
-	
+
 	private void writeListOfCards(List<Card> list){
-		for(Card card : list){
-			(new CardView(card, true, 
-					isLastCardOfStright(card, list))).write();
+		if(list.isEmpty()){
+			new IO().writeEmpty();
+		}
+		else {
+			for(Card card : list){
+				(new CardView(card, true, 
+						isLastCardOfStright(card, list))).write();
+			}
 		}
 	}
-	
+
 	private boolean isLastCardOfStright(Card card, List<Card> list){
 		return list.get(list.size()-1).equals(card);
 	}

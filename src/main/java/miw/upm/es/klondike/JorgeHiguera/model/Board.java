@@ -20,6 +20,10 @@ public class Board {
 	public final static int NUM_STRIGHTS = 7;
 	
 	public final static int NUM_CARDS_PER_SUIT = 12;
+
+	public final static int ACE_NUMBER = 1;
+
+	public final static int KING_NUMBER = 12;
 	
 	public Board(){
 		suits = new HashMap<Suit, List<Card>>();
@@ -43,6 +47,7 @@ public class Board {
 		for(int i = 0; i < deck.size() 
 				&& i < NUM_CARDS_PER_DRAW; i++){
 			deck.get(i).setFaceDown(false);
+			deck.get(i).setPlaceOfCard(PlaceOfCard.DISCARD);
 			tempList.add(deck.get(i));
 		}
 		deck.removeAll(tempList);
@@ -52,6 +57,7 @@ public class Board {
 	public void moveFromDiscardToDeck(){
 		for(int i = discard.size() - 1; i >= 0; i--){
 			discard.get(i).setFaceDown(true);
+			discard.get(i).setPlaceOfCard(PlaceOfCard.DECK);;
 			deck.add(discard.get(i));
 		}
 		discard.clear();
@@ -114,6 +120,28 @@ public class Board {
 
 	public void moveFromDiscardToStright(Card toPlace, int stright) {
 		discard.remove(toPlace);
+		toPlace.setPlaceOfCard(PlaceOfCard.STRIGHT);
 		strights.get(stright).add(toPlace);
+	}
+
+	public void moveFromStrightToStright(int originStright, int targetStright) {
+		Card toPlace = strights.get(originStright).get(strights.get(originStright).size() -1);
+		strights.get(originStright).remove(toPlace);
+		strights.get(targetStright).add(toPlace);
+	}
+
+	public Card getFirstCardFromSuit(Card toPlace) {
+		if (suits.get(toPlace.getSuit()).isEmpty()){
+			return null;
+		}
+		else {
+			return suits.get(toPlace.getSuit()).get(suits.get(toPlace.getSuit()).size()-1);
+		}
+	}
+
+	public void moveFromDiscardToSuit(Card toPlace) {
+		discard.remove(toPlace);
+		toPlace.setPlaceOfCard(PlaceOfCard.SUIT);
+		suits.get(toPlace.getSuit()).add(toPlace);
 	}
 }

@@ -88,4 +88,16 @@ public class Game {
 		board.moveFromDiscardToStright(toPlace, stright);
 	}
 
+	public void moveFromStrightToStright(int originStright, int targetStright) {
+		board.moveFromStrightToStright(originStright, targetStright);
+	}
+
+	public Card getFirstCardFromSuit(Card toPlace) {
+		return board.getFirstCardFromSuit(toPlace);
+	}
+
+	public void moveFromDiscardToSuit(Card toPlace) {
+		board.moveFromDiscardToSuit(toPlace);
+	}
+
 }

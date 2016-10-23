@@ -5,6 +5,8 @@ import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToDeckController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToStrightController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToSuitController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
@@ -30,13 +32,13 @@ public class GameView implements PlaceCardControllerVisitor{
 	@Override
 	public void visit(MoveFromDiscardToStrightController moveFromDiscardToStrightController) {
 		// TODO Auto-generated method stub
-		MoveOriginStrightMovementView view = new MoveOriginStrightMovementView();
+		MoveStrightMovementView view = new MoveStrightMovementView();
 		Error error = null;
 		do{
-			int targetStright = view.getStright();
+			int targetStright = view.getTargetStright();
 			error = moveFromDiscardToStrightController.move(targetStright);
 			if(error != null){
-				new IO().writeln("Error: " + error);
+				new IO().writeln("Error: " + error.toString());
 			}
 		} while(error != null);
 		this.showBoard(moveFromDiscardToStrightController);
@@ -44,5 +46,27 @@ public class GameView implements PlaceCardControllerVisitor{
 	
 	private void showBoard(PlaceCardController placeCardController){
 		new BoardView(placeCardController).write();
+	}
+
+	@Override
+	public void visit(MoveFromStrightToStrightController moveFromStrightToStrightController) {
+		MoveStrightMovementView view = new MoveStrightMovementView();
+		Error error = null;
+		do{
+			int originStright = view.getOriginStright();
+			int targetStright = view.getTargetStright();
+			
+			error = moveFromStrightToStrightController.move(originStright, targetStright);
+			if(error != null){
+				new IO().writeln("Error: " + error.toString());
+			}
+		} while(error != null);
+		this.showBoard(moveFromStrightToStrightController);
+	}
+
+	@Override
+	public void visit(MoveFromDiscardToSuitController moveFromDiscardToSuitController) {
+		moveFromDiscardToSuitController.move();
+		this.showBoard(moveFromDiscardToSuitController);
 	}
 }

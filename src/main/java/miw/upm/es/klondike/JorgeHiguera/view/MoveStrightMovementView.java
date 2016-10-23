@@ -1,16 +1,21 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
-public abstract class MoveStrightMovementView extends MovementView {
+import miw.upm.es.klondike.JorgeHiguera.model.Board;
 
-	private int stright;
-	
-	public MoveStrightMovementView(MovementController movementController) {
-		super(movementController);
+public class MoveStrightMovementView {
+
+	public int getTargetStright(){
+		PositionView positionView = new PositionView(
+				"A qué escalera?", "Escalera?", Board.NUM_STRIGHTS);
+		positionView.read();
+		return positionView.getPosition();
 	}
-	
-	int getPosition(){
-		stright = this.getMovementController().getOriginStright();
-		this.getMovementController().accept(this);
-		return stright;
+
+	public int getOriginStright() {
+		PositionView positionView = new PositionView(
+				"Desde qué escalera?", "Escalera?", Board.NUM_STRIGHTS);
+		positionView.read();
+		return positionView.getPosition();
 	}
+
 }

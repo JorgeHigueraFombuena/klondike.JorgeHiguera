@@ -58,7 +58,11 @@ public class Card {
 	}
 
 	public boolean isKing() {
-		return number == Board.NUM_CARDS_PER_SUIT;
+		return number == Board.KING_NUMBER;
+	}
+
+	public boolean isAce() {
+		return number == Board.ACE_NUMBER;
 	}
 	
 	

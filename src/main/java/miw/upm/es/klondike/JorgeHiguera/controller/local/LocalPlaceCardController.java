@@ -19,21 +19,26 @@ implements PlaceCardController {
 	}	
 
 	@Override
-	public Error movedPermited(Card toPlace, Card placed){
-		if(placed == null && toPlace.isKing()){
-			return null;
+	public Error movedPermited(Card toPlace, Card placed, PlaceOfCard targetPlace){
+		if(targetPlace == PlaceOfCard.SUIT){
+			if(placed == null && toPlace.isAce()){
+				return null;
+			}
+			else if(placed != null && toPlace.getSuit().equals(placed.getSuit())
+					&& placed.getNumber() - toPlace.getNumber() == 1){
+				return null;
+			}
 		}
-		else if(placed.getPlaceOfCard() == PlaceOfCard.STRIGHT
-				&& placed.getNumber() - toPlace.getNumber() == 1
-				&& !placed.getSuit().equals(toPlace.getSuit())){
-			return null;
-		}
-		else if(placed.getPlaceOfCard() == PlaceOfCard.SUIT
-				&& placed.getNumber() - toPlace.getNumber() == 1
-				&& placed.getSuit().equals(toPlace.getSuit())){
-			return null;
+		else if(targetPlace == PlaceOfCard.STRIGHT){
+			if(placed == null && toPlace.isKing()){
+				return null;
+			}
+			else if(placed != null && !toPlace.getSuit().equals(placed.getSuit())
+					&& placed.getNumber() - toPlace.getNumber() == 1){
+				return null;
+			}
 		}
 		return Error.MOVEMENT_NOT_PERMITED;
 	}
-	
+
 }

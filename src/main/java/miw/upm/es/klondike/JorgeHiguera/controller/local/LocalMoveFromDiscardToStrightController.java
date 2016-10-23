@@ -7,6 +7,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
+import miw.upm.es.klondike.JorgeHiguera.model.PlaceOfCard;
 
 public class LocalMoveFromDiscardToStrightController extends LocalPlaceCardController
 		implements MoveFromDiscardToStrightController {
@@ -18,12 +19,6 @@ public class LocalMoveFromDiscardToStrightController extends LocalPlaceCardContr
 	@Override
 	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
 		colocateControllerVisitor.visit(this);
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -41,7 +36,7 @@ public class LocalMoveFromDiscardToStrightController extends LocalPlaceCardContr
 	public Error move(int targetStright) {
 		Card placed = super.getFirstCardFromStright(targetStright);
 		Card toPlace = super.getFirstCardFromDiscard();
-		Error error = super.movedPermited(toPlace, placed);
+		Error error = super.movedPermited(toPlace, placed, PlaceOfCard.STRIGHT);
 		if(error == null){
 			super.move(toPlace, targetStright);
 		}

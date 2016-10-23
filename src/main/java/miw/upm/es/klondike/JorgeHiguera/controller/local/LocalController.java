@@ -96,7 +96,11 @@ public class LocalController {
 		this.setState(State.ASK_OPERATION);
 	}
 	
-
+	public void moveFromStrightToStright(int originStright, int targetStright){
+		game.moveFromStrightToStright(originStright, targetStright);
+		this.askOption();
+	}
+	
 	public void changeState() {
 		if(this.getSelectedOption() != Options.EXIT){
 			this.setState(State.IN_GAME);
@@ -106,9 +110,17 @@ public class LocalController {
 		}
 	}
 	
-
 	public void askOption(){
 		this.setState(State.ASK_OPERATION);
+	}
+	
+	public Card getFirstCardFromSuit(Card toPlace){
+		return game.getFirstCardFromSuit(toPlace);
+	}
+	
+	public void moveFromDiscardToSuit(Card toPlace){
+		game.moveFromDiscardToSuit(toPlace);
+		askOption();
 	}
 	
 }
