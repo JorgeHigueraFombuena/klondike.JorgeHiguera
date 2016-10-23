@@ -1,4 +1,4 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToDeckController;
@@ -27,5 +27,4 @@ implements MoveFromDiscardToDeckController{
 	public void accept(OperationControllerVisitor operationalControllerVisitor) {
 		operationalControllerVisitor.visit(this);
 	}
-
 }

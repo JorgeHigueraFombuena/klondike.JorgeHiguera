@@ -1,4 +1,4 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.AskOperationController;
 import miw.upm.es.klondike.JorgeHiguera.controller.AskOperationControllerVisitor;
@@ -29,6 +29,7 @@ implements AskOperationController {
 	@Override
 	public void askFor(int option) {
 		this.changeAskOption(option);
+		super.changeState();
 	}
 
 	@Override

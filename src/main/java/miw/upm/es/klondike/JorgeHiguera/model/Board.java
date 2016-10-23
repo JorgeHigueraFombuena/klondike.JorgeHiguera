@@ -89,4 +89,31 @@ public class Board {
 	public boolean isEmptyDiscard() {
 		return discard.isEmpty();
 	}
+
+	public int getNumStrights() {
+		return NUM_STRIGHTS;
+	}
+
+	public Card getFirstCardFromStright(int stright) {
+		if(strights.get(stright).isEmpty()){
+			return null;
+		}
+		else {
+			return strights.get(stright).get(strights.get(stright).size()-1);
+		}
+	}
+
+	public Card getFirstCardFromDiscard() {
+		if(discard.isEmpty()){
+			return null;
+		}
+		else {
+			return discard.get(discard.size()-1);
+		}
+	}
+
+	public void moveFromDiscardToStright(Card toPlace, int stright) {
+		discard.remove(toPlace);
+		strights.get(stright).add(toPlace);
+	}
 }

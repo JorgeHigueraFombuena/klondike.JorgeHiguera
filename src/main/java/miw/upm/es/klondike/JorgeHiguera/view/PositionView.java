@@ -34,7 +34,7 @@ public class PositionView {
 	void read(){
 		io.writeln(title);
 		position = new LimitedIntDialog(limitDialogTitle,
-				maxLimit).read() - 1;
+				maxLimit).read();
 	}
 	
 }

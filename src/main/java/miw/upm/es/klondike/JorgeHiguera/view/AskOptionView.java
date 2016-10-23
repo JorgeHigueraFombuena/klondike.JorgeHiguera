@@ -26,7 +26,6 @@ public class AskOptionView implements AskOperationControllerVisitor {
 		}while(error != null);
 		
 		askOperationController.askFor(option);
-		askOperationController.changeState();
 	}
 
 	public void interact(AskOperationController askOperationController) {

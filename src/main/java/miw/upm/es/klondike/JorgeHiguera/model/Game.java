@@ -72,4 +72,20 @@ public class Game {
 		board.moveFromDiscardToDeck();
 	}
 
+	public int getNumStrights() {
+		return board.getNumStrights();
+	}
+
+	public Card getFirstCardFromStright(int stright) {
+		return board.getFirstCardFromStright(stright);
+	}
+
+	public Card getFirstCardFromDiscard() {
+		return board.getFirstCardFromDiscard();
+	}
+
+	public void moveFromDiscardToStright(Card toPlace, int stright) {
+		board.moveFromDiscardToStright(toPlace, stright);
+	}
+
 }

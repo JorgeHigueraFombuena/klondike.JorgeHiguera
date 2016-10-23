@@ -1,4 +1,4 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;

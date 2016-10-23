@@ -1,4 +1,4 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import java.util.List;
 import java.util.Map;
@@ -21,10 +21,12 @@ public class LocalController {
 	
 	public void moveFromDeckToDiscard(){
 		game.moveFromDeckToDiscard();
+		askOption();
 	}
 	
 	public void moveFromDiscardToDeck(){
 		game.moveFromDiscardToDeck();
+		askOption();
 	}
 	
 	public Error validateEmptyDeck(){
@@ -36,9 +38,17 @@ public class LocalController {
 	
 	public Error validateEmptyDiscard(){
 		if(!game.isEmptyDiscard()){
-			return Error.DISCARD_EMPTY;
+			return Error.DISCARD_NO_EMPTY;
 		}
-		return Error.DISCARD_NO_EMPTY;
+		return Error.DISCARD_EMPTY;
+	}
+	
+	public Card getFirstCardFromStright(int stright){
+		return game.getFirstCardFromStright(stright);
+	}
+	
+	public Card getFirstCardFromDiscard() {
+		return game.getFirstCardFromDiscard();
 	}
 	
 	public Options getOptionSelected(){
@@ -52,15 +62,7 @@ public class LocalController {
 	public List<Card> getDiscard(){
 		return game.getDiscard();
 	}
-	
-	public Map<Integer, List<Card>> getStrights(){
-		return game.getStrights();
-	}
-	
-	public Map<Suit, List<Card>> getSuits(){
-		return game.getSuits();
-	}
-	
+		
 	public State getState(){
 		return game.getState();
 	}
@@ -75,6 +77,38 @@ public class LocalController {
 	
 	Options getSelectedOption(){
 		return game.getOptionSelected();
+	}
+	
+	public int getNumStrights(){
+		return game.getNumStrights();
+	}
+	
+	public Map<Suit, List<Card>> getSuits() {
+		return game.getSuits();
+	}
+
+	public Map<Integer, List<Card>> getStrights() {
+		return game.getStrights();
+	}
+	
+	public void move(Card toPlace, int stright){
+		game.moveFromDiscardToStright(toPlace, stright);
+		this.setState(State.ASK_OPERATION);
+	}
+	
+
+	public void changeState() {
+		if(this.getSelectedOption() != Options.EXIT){
+			this.setState(State.IN_GAME);
+		}
+		else{
+			this.setState(State.FINISHED);
+		}
+	}
+	
+
+	public void askOption(){
+		this.setState(State.ASK_OPERATION);
 	}
 	
 }

@@ -57,7 +57,7 @@ public class CardView {
 	}
 	
 	private char symbolToChart(){
-		return SYMBOLS_CARDS[card.getSuit().ordinal()];
+		return SYMBOLS_CARDS[card.getNumber()-1];
 	}
 	
 	private void writeMiddleStright() {

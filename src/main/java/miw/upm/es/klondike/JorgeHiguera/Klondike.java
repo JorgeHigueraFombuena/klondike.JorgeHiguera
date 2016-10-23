@@ -1,6 +1,6 @@
 package miw.upm.es.klondike.JorgeHiguera;
 
-import miw.upm.es.Klondike.JorgeHiguera.controller.local.LocalLogic;
+import miw.upm.es.klondike.JorgeHiguera.controller.local.LocalLogic;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
 import miw.upm.es.klondike.JorgeHiguera.view.KlondikeView;
 

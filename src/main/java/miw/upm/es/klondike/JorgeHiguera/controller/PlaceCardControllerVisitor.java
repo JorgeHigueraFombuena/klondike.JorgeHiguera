@@ -6,4 +6,7 @@ public interface PlaceCardControllerVisitor {
 	
 	public void visit(MoveFromDiscardToDeckController moveFromDiscardToDeckController);
 	
+	public void visit(MoveFromDiscardToStrightController moveFromDiscardToStrightController);
+	
+	public void visit(MoveFromStrightToStrightController moveFromStrightToStrightController);
 }

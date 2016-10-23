@@ -1,4 +1,4 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +13,7 @@ import miw.upm.es.klondike.JorgeHiguera.model.Board;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 import miw.upm.es.klondike.JorgeHiguera.model.Options;
+import miw.upm.es.klondike.JorgeHiguera.model.PlaceOfCard;
 import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 
 public class LocalBuilderController implements BuilderController{
@@ -28,8 +29,8 @@ public class LocalBuilderController implements BuilderController{
 
 	public void build() {
 		List<Card> deck = initDeck();
-		game.setDeck(deck);
 		game.setStrights(initStrights(deck));
+		game.setDeck(deck);
 		initAskOperation();
 	}
 
@@ -46,6 +47,8 @@ public class LocalBuilderController implements BuilderController{
 			return 	new LocalMoveFromDeckToDiscardController(game);
 		case FROM_DISCARD_TO_DECK:
 			return	new LocalMoveFromDiscardToDeckController(game);
+		case FROM_DISCARD_TO_STRIGHT:
+			return new LocalMoveFromDiscardToStrightController(game);
 		default:
 			return null;
 		}
@@ -59,6 +62,7 @@ public class LocalBuilderController implements BuilderController{
 				if(j == i - 1){
 					deck.get(j).setFaceDown(false);
 				}
+				deck.get(j).setPlaceOfCard(PlaceOfCard.STRIGHT);
 				stright.add(deck.get(j));
 			}
 			deck.removeAll(stright);
@@ -78,13 +82,8 @@ public class LocalBuilderController implements BuilderController{
 	
 	private List<Card> initSuit(Suit suit){
 		List<Card> list = new ArrayList<Card>();
-		Random rand = new Random();
-		int randomNum = 0;
-		while(list.size() != Board.NUM_CARDS_PER_SUIT){
-			randomNum = rand.nextInt((Board.NUM_CARDS_PER_SUIT - 1) + 1) + 1;
-			if(!list.contains(new Card(suit, randomNum, true))){
-				list.add(new Card(suit, randomNum, true));
-			}
+		for(int i = 1; i <= Board.NUM_CARDS_PER_SUIT; i++){
+			list.add(new Card(suit, i, PlaceOfCard.DECK, true));
 		}
 		return list;
 	}

@@ -1,4 +1,4 @@
-package miw.upm.es.Klondike.JorgeHiguera.controller.local;
+package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
@@ -14,19 +14,5 @@ implements OperationController {
 	}
 
 	public abstract void accept(OperationControllerVisitor operationalControllerVisitor);
-
-	@Override
-	public void changeState() {
-		if(this.getSelectedOption() != Options.EXIT){
-			this.setState(State.IN_GAME);
-		}
-		else{
-			this.setState(State.FINISHED);
-		}
-	}
 	
-	@Override
-	public void askOption(){
-		this.setState(State.ASK_OPERATION);
-	}
 }
