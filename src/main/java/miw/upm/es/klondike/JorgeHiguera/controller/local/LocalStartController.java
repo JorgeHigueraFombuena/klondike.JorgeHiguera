@@ -31,6 +31,7 @@ public class LocalStartController extends LocalOperationController implements St
 
 	@Override
 	public void accept(OperationControllerVisitor operationalControllerVisitor) {
+		assert operationalControllerVisitor != null;
 		operationalControllerVisitor.visit(this);
 	}
 
