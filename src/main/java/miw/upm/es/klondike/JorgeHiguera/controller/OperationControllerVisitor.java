@@ -6,7 +6,7 @@ public interface OperationControllerVisitor {
 	
 	public void visit(PlaceCardController colocateController);
 
-	public void visit(AskOperationController AskOperationController);
+	public void visit(AskOperationController askOperationController);
 
 
 }

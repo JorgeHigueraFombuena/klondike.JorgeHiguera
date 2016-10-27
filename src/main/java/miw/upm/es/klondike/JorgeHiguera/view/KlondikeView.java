@@ -28,17 +28,20 @@ public class KlondikeView implements View{
 
 	@Override
 	public void visit(StartController startController) {
+		assert startController != null;
 		startView.interact(startController);
 	}
 
 	@Override
 	public void visit(PlaceCardController colocateController) {
+		assert colocateController != null;
 		gameView.interact(colocateController);
 	}
 
 	@Override
-	public void visit(AskOperationController AskOperationController) {
-		askOptionView.interact(AskOperationController);
+	public void visit(AskOperationController askOperationController) {
+		assert askOperationController != null;
+		askOptionView.interact(askOperationController);
 	}
 
 }
