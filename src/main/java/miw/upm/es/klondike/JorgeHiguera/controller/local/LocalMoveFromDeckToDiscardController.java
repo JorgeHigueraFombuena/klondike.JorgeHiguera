@@ -4,6 +4,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
+import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 
 public class LocalMoveFromDeckToDiscardController extends LocalPlaceCardController
@@ -24,9 +25,15 @@ public class LocalMoveFromDeckToDiscardController extends LocalPlaceCardControll
 	}
 
 	@Override
-	public void move() {
-		assert super.validateEmptyDeck() == Error.DECK_NO_EMPTY;
+	public Error move() {
 		super.moveFromDeckToDiscard();
+		return null;
+	}
+
+	@Override
+	public Error isStrightCorrect(int stright, Card card) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

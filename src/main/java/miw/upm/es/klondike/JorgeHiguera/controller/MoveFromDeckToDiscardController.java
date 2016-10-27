@@ -1,6 +1,5 @@
 package miw.upm.es.klondike.JorgeHiguera.controller;
 
-public interface MoveFromDeckToDiscardController extends PlaceCardController {
+public interface MoveFromDeckToDiscardController extends MovePilesController {
 
-	void move();
 }

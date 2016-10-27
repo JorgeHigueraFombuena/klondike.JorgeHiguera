@@ -1,6 +1,6 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
-import miw.upm.es.klondike.JorgeHiguera.model.Board;
+
 import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 
 public class MoveSuitMovementView {

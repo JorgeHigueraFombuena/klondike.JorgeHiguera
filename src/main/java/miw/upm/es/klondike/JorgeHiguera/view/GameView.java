@@ -16,6 +16,7 @@ import java.awt.PageAttributes.OriginType;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.controller.FaceUpCardInStrightController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
 
 public class GameView implements PlaceCardControllerVisitor{
 
@@ -49,7 +50,7 @@ public class GameView implements PlaceCardControllerVisitor{
 		this.showBoard(moveFromDiscardToStrightController);
 	}
 	
-	private void showBoard(PlaceCardController placeCardController){
+	private void showBoard(MoveCardController placeCardController){
 		new BoardView(placeCardController).write();
 	}
 
