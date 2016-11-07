@@ -43,8 +43,12 @@ public class LocalController {
 		return Error.DISCARD_EMPTY;
 	}
 	
-	public Card getFirstCardFromStright(int stright){
-		return game.getFirstCardFromStright(stright);
+	public List<Card> getFaceUpCardsOfStright(int stright){
+		return game.getFaceUpCardsOfStright(stright);
+	}
+	
+	public Card getFirstCardOfStright(int stright){
+		return game.getFirstCardOfStright(stright);
 	}
 	
 	public Card getFirstCardFromDiscard() {

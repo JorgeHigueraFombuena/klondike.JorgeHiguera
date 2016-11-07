@@ -3,6 +3,7 @@ package miw.upm.es.klondike.JorgeHiguera.view;
 import miw.upm.es.klondike.JorgeHiguera.View;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.AskOperationController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
 import miw.upm.es.klondike.JorgeHiguera.controller.StartController;
 
@@ -33,9 +34,9 @@ public class KlondikeView implements View{
 	}
 
 	@Override
-	public void visit(PlaceCardController colocateController) {
-		assert colocateController != null;
-		gameView.interact(colocateController);
+	public void visit(MoveCardController moveCardController) {
+		assert moveCardController != null;
+		gameView.interact(moveCardController);
 	}
 
 	@Override

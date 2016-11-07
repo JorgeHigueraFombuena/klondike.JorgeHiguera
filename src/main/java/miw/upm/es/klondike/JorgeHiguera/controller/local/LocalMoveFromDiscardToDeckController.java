@@ -7,7 +7,7 @@ import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.model.Card;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 
-public class LocalMoveFromDiscardToDeckController extends LocalPlaceCardController 
+public class LocalMoveFromDiscardToDeckController extends LocalMoveCardContoller 
 implements MoveFromDiscardToDeckController{
 
 	public LocalMoveFromDiscardToDeckController(Game game) {
@@ -30,9 +30,4 @@ implements MoveFromDiscardToDeckController{
 		operationalControllerVisitor.visit(this);
 	}
 
-	@Override
-	public Error isStrightCorrect(int stright, Card card) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

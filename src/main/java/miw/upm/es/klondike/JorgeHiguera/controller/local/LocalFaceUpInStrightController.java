@@ -14,19 +14,13 @@ public class LocalFaceUpInStrightController extends LocalPlaceCardController imp
 	}
 
 	@Override
-	public Error isStrightCorrect(int stright, Card card) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
 		colocateControllerVisitor.visit(this);
 	}
 
 	@Override
 	public Error move(int targetStright) {
-		Card toFaceUp = super.getFirstCardFromStright(targetStright);
+		Card toFaceUp = super.getFirstCardOfStright(targetStright);
 		Error error = super.faceUpPermited(toFaceUp);
 		if(error == null){
 			super.faceUpCard(targetStright);

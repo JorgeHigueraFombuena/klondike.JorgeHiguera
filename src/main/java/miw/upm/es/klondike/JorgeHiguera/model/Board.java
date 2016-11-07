@@ -100,12 +100,19 @@ public class Board {
 		return NUM_STRIGHTS;
 	}
 
-	public Card getFirstCardFromStright(int stright) {
+	public List<Card> getFaceUpCardsOfStright(int stright) {
 		if(strights.get(stright).isEmpty()){
 			return null;
 		}
 		else {
-			return strights.get(stright).get(strights.get(stright).size()-1);
+			List<Card> cards = new ArrayList<Card>();
+			List<Card> strightCards = strights.get(stright);
+			for(Card card : strightCards){
+				if(!card.isFaceDown()){
+					cards.add(card);
+				}
+			}
+			return cards;
 		}
 	}
 
@@ -125,9 +132,38 @@ public class Board {
 	}
 
 	public void moveFromStrightToStright(int originStright, int targetStright) {
-		Card toPlace = strights.get(originStright).get(strights.get(originStright).size() -1);
-		strights.get(originStright).remove(toPlace);
-		strights.get(targetStright).add(toPlace);
+		List<Card> originStrightCards = getFaceUpCardsOfStright(originStright);
+		List<Card> targetStrightCards = getFaceUpCardsOfStright(targetStright);
+		List<Card> toPlaceCards = this.getCardsMovedPermited(originStrightCards,
+				targetStrightCards.get(targetStrightCards.size() - 1));
+		strights.get(originStright).removeAll(toPlaceCards);
+		strights.get(targetStright).addAll(toPlaceCards);
+	}
+	
+	private List<Card> getCardsMovedPermited(List<Card> toPlaceCards, Card placed){
+		List<Card> cards = new ArrayList<Card>();
+		boolean found = false;
+		int i = 0;
+		while(i < toPlaceCards.size() && !found){
+			Card toPlace = toPlaceCards.get(i);
+			if(placed == null && toPlace.isKing()){
+				found = true;
+			}
+			else if(placed != null && placed.isFaceDown() && toPlace.isKing()){
+				found = true;
+			}
+			else if(placed != null && !toPlace.getSuit().equals(placed.getSuit())
+					&& placed.getNumber() - toPlace.getNumber() == 1){
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		for(int j = i; j < toPlaceCards.size(); j++){
+			cards.add(toPlaceCards.get(j));
+		}
+		return cards;
 	}
 
 	public Card getFirstCardFromSuit(Suit suit) {
@@ -159,5 +195,14 @@ public class Board {
 
 	public void faceUpCard(int targetStright) {
 		strights.get(targetStright).get(strights.get(targetStright).size() - 1).setFaceDown(false);
+	}
+
+	public Card getFirstCardOfStright(int stright) {
+		if(strights.get(stright).isEmpty()){
+		return null;
+		}
+		else {
+			return strights.get(strights).get(strights.get(stright).size() - 1);
+		}
 	}
 }

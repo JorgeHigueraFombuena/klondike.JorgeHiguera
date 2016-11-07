@@ -1,5 +1,8 @@
 package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromSuitToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
@@ -17,12 +20,6 @@ public class LocalMoveFromSuitToStrightController extends LocalPlaceCardControll
 	}
 
 	@Override
-	public Error isStrightCorrect(int stright, Card card) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
 		colocateControllerVisitor.visit(this);
 	}
@@ -30,8 +27,16 @@ public class LocalMoveFromSuitToStrightController extends LocalPlaceCardControll
 	@Override
 	public Error move(Suit originSuit, int targetStright) {
 		Card toPlace = super.getFirstCardFromSuit(originSuit);
-		Card placed = super.getFirstCardFromStright(targetStright);
-		Error error = super.movedPermited(toPlace, placed, PlaceOfCard.STRIGHT);
+		Card placed = super.getFirstCardOfStright(targetStright);
+		List<Card> toPlaceCards = new ArrayList<Card>();
+		List<Card> placedCards = new ArrayList<Card>();
+		if(toPlace != null){
+			toPlaceCards.add(toPlace);
+		}
+		if(placed != null){
+			placedCards.add(placed);
+		}
+		Error error = super.movedPermited(toPlaceCards, placedCards, PlaceOfCard.STRIGHT);
 		if(error == null){
 			super.moveFromSuitToStright(originSuit, targetStright);
 		}

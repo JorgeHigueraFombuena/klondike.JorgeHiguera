@@ -75,9 +75,9 @@ public class Game {
 	public int getNumStrights() {
 		return board.getNumStrights();
 	}
-
-	public Card getFirstCardFromStright(int stright) {
-		return board.getFirstCardFromStright(stright);
+	
+	public List<Card> getFaceUpCardsOfStright(int stright) {
+		return board.getFaceUpCardsOfStright(stright);
 	}
 
 	public Card getFirstCardFromDiscard() {
@@ -110,6 +110,10 @@ public class Game {
 
 	public void faceUpCard(int targetStright) {
 		board.faceUpCard(targetStright);
+	}
+
+	public Card getFirstCardOfStright(int stright) {
+		return board.getFirstCardOfStright(stright);
 	}
 
 }

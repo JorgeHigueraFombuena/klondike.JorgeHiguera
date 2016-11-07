@@ -20,8 +20,8 @@ import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
 
 public class GameView implements PlaceCardControllerVisitor{
 
-	public void interact(PlaceCardController placeCardController){
-		placeCardController.accept(this);
+	public void interact(MoveCardController moveCardController){
+		moveCardController.accept(this);
 	}
 	
 	@Override
@@ -72,7 +72,10 @@ public class GameView implements PlaceCardControllerVisitor{
 
 	@Override
 	public void visit(MoveFromDiscardToSuitController moveFromDiscardToSuitController) {
-		moveFromDiscardToSuitController.move();
+		Error error = moveFromDiscardToSuitController.move();
+		if(error != null){
+			new IO().writeln("Error: " + error.toString());
+		}
 		this.showBoard(moveFromDiscardToSuitController);
 	}
 

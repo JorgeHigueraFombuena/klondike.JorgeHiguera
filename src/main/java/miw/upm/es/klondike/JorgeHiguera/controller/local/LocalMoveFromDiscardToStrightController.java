@@ -1,5 +1,8 @@
 package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToStrightController;
@@ -27,16 +30,14 @@ public class LocalMoveFromDiscardToStrightController extends LocalPlaceCardContr
 	}
 
 	@Override
-	public Error isStrightCorrect(int stright, Card card) {
-		
-		return null;
-	}
-
-	@Override
 	public Error move(int targetStright) {
-		Card placed = super.getFirstCardFromStright(targetStright);
+		List<Card> placedCards = super.getFaceUpCardsOfStright(targetStright);
 		Card toPlace = super.getFirstCardFromDiscard();
-		Error error = super.movedPermited(toPlace, placed, PlaceOfCard.STRIGHT);
+		List<Card> cardFromDiscard = new ArrayList<Card>();
+		if(toPlace != null){
+			cardFromDiscard.add(toPlace);
+		}
+		Error error = super.movedPermited(cardFromDiscard, placedCards, PlaceOfCard.STRIGHT);
 		if(error == null){
 			super.move(toPlace, targetStright);
 		}
