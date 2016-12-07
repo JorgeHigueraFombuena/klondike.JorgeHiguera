@@ -2,20 +2,20 @@ package miw.upm.es.klondike.JorgeHiguera.model;
 
 public class Position {
 	
-	private int position;
+	private int pos;
 	
 	private Suit suit;
 	
 	private Card card;
 	
-	public static int NUM_STRIGHTS = 7;
+	public static final int NUM_STRIGHTS = 7;
 	
-	public static int NUM_CARDS_PER_SUIT = 12;
+	public static final int NUM_CARDS_PER_SUIT = 12;
 	
 	public Position(int position, Card card){
 		assert position > 0;
 		assert card != null;
-		this.position = position;
+		this.pos = position;
 		this.card = card;
 	}
 	
@@ -27,7 +27,7 @@ public class Position {
 	}
 	
 	public int getPosition(){
-		return position;
+		return pos;
 	}
 	
 	public Suit getSuit(){

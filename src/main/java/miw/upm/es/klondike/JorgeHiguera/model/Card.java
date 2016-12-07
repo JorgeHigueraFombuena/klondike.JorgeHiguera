@@ -50,13 +50,16 @@ public class Card {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		return 	obj instanceof Card &&
-				suit == ((Card)obj).getSuit() &&
-				number == ((Card)obj).getNumber() &&
-				faceDown == ((Card)obj).isFaceDown();
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (faceDown ? 1231 : 1237);
+		result = prime * result + number;
+		result = prime * result + ((place == null) ? 0 : place.hashCode());
+		result = prime * result + ((suit == null) ? 0 : suit.hashCode());
+		return result;
 	}
-
+	
 	public boolean isKing() {
 		return number == Board.KING_NUMBER;
 	}

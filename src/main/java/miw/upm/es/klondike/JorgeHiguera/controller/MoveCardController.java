@@ -12,9 +12,4 @@ PresenterController
 	void accept(PlaceCardControllerVisitor colocateControllerVisitor);
 
 	Error movedPermited(List<Card> toPlaceCards, List<Card> placedCards, PlaceOfCard targerPlace);
-	
-	//Card getFirstCardMovedPermited(List<Card> toPlaceCards, Card placed);
-
-	//Error isStrightCorrect(int stright, Card card);
-
 }
