@@ -116,4 +116,7 @@ public class Game {
 		return board.getFirstCardOfStright(stright);
 	}
 
+	public boolean gameFinished(){
+		return board.gameFinished();
+	}
 }

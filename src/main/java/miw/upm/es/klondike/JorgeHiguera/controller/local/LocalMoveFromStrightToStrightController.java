@@ -31,6 +31,9 @@ public class LocalMoveFromStrightToStrightController extends LocalPlaceCardContr
 		if(error == null){
 			super.moveFromStrightToStright(originStright, targetStright);
 		}
+		else {
+			super.askOption();
+		}
 		return error;
 	}
 

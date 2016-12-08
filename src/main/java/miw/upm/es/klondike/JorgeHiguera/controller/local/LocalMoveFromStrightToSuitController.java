@@ -39,6 +39,9 @@ public class LocalMoveFromStrightToSuitController extends LocalPlaceCardControll
 		if(error == null){
 			super.moveFromStrightToSuit(originStright);
 		}
+		else{
+			super.askOption();
+		}
 		return error;
 	}
 

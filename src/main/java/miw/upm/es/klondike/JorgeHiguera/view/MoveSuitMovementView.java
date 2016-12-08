@@ -7,7 +7,7 @@ public class MoveSuitMovementView {
 
 	public Suit getOriginSuit() {
 		PositionView positionView = new PositionView(
-				"Desde qué palo?", "Palo?");
+				"Desde qué palo?", "Palo? [oros, bastos, espadas, copas]");
 		positionView.readSuit();
 		return positionView.getSuit();
 	}

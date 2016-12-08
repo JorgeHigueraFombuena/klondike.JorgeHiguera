@@ -142,4 +142,7 @@ public class LocalController {
 		askOption();
 	}
 	
+	public boolean gameFinished(){
+		return game.gameFinished();
+	}
 }

@@ -5,24 +5,23 @@ import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 public class LimitedSuitDialog {
 
 	private String title;
-	
+
 	private ClosedSuitIntervalView limitView;
-	
+
 	public LimitedSuitDialog(String title){
 		this.title = title;
+		this.limitView = new ClosedSuitIntervalView("El valor debe estar entre ");
 	}
-	
+
 	public Suit read(){
 		IO io = new IO();
-		boolean ok;
-		String aux;
-		do {
-			 aux = io.readString(title);
-			ok = Suit.valueOf(aux) != null;
-			if (!ok) {
-				limitView.writeln();
-			}
-		} while (!ok);
-		return Suit.valueOf(aux);
+		boolean ok = false;
+		String aux = null;
+		try {
+			this.limitView.writeln();
+			aux = io.readString("");
+			ok = Suit.valueOf(aux.toUpperCase()) != null;
+		} catch(Exception e){}
+		return ok ? Suit.valueOf(aux.toUpperCase()) : null;
 	}
 }

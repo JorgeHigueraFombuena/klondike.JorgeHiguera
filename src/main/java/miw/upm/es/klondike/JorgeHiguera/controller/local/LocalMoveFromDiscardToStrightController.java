@@ -37,9 +37,15 @@ public class LocalMoveFromDiscardToStrightController extends LocalPlaceCardContr
 		if(toPlace != null){
 			cardFromDiscard.add(toPlace);
 		}
+		if(placedCards == null){
+			placedCards = new ArrayList<Card>();
+		}
 		Error error = super.movedPermited(cardFromDiscard, placedCards, PlaceOfCard.STRIGHT);
 		if(error == null){
 			super.move(toPlace, targetStright);
+		}
+		else {
+			super.askOption();
 		}
 		return error;
 	}

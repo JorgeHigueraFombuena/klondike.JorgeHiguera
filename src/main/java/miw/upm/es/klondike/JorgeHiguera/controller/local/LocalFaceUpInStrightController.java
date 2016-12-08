@@ -25,6 +25,9 @@ public class LocalFaceUpInStrightController extends LocalPlaceCardController imp
 		if(error == null){
 			super.faceUpCard(targetStright);
 		}
+		else{
+			super.askOption();
+		}
 		return error;
 	}
 

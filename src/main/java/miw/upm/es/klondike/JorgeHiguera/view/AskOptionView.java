@@ -12,19 +12,17 @@ import miw.upm.es.klondike.JorgeHiguera.utils.LimitedIntDialog;
 public class AskOptionView implements AskOperationControllerVisitor {
 
 	IO io = new IO();
-	
+
 	@Override
 	public void visit(AskOperationController askOperationController) {
 		int option = -1;
 		Error error = null;
-		do{
-			option = new LimitedIntDialog("Opción?", 1, Options.values().length).read() - 1;
-			error = askOperationController.isValidOptionSelected(option);
-			if(error != null){
-				io.writeln("Error: " + error.toString());
-			}
-		}while(error != null);
-		
+		option = new LimitedIntDialog("Opción?", 1, Options.values().length).read() - 1;
+		error = askOperationController.isValidOptionSelected(option);
+		if(error != null){
+			io.writeln("Error: " + error.toString());
+		}
+
 		askOperationController.askFor(option);
 	}
 

@@ -1,6 +1,7 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
+import miw.upm.es.klondike.JorgeHiguera.model.FinishedMessages;
 import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
@@ -23,51 +24,52 @@ public class GameView implements PlaceCardControllerVisitor{
 	public void interact(MoveCardController moveCardController){
 		moveCardController.accept(this);
 	}
-	
+
 	@Override
 	public void visit(MoveFromDeckToDiscardController moveFromDeckToDiscardController) {
 		moveFromDeckToDiscardController.move();
-		this.showBoard(moveFromDeckToDiscardController);
+		this.showNextMessage(moveFromDeckToDiscardController);
 	}
 
 	@Override
 	public void visit(MoveFromDiscardToDeckController moveFromDiscardToDeckController) {
 		moveFromDiscardToDeckController.move();
-		this.showBoard(moveFromDiscardToDeckController);
+		this.showNextMessage(moveFromDiscardToDeckController);
 	}
 
 	@Override
 	public void visit(MoveFromDiscardToStrightController moveFromDiscardToStrightController) {
 		MoveStrightMovementView view = new MoveStrightMovementView();
 		Error error = null;
-		do{
-			int targetStright = view.getTargetStright();
-			error = moveFromDiscardToStrightController.move(targetStright);
-			if(error != null){
-				new IO().writeln("Error: " + error.toString());
-			}
-		} while(error != null);
-		this.showBoard(moveFromDiscardToStrightController);
+		int targetStright = view.getTargetStright();
+		error = moveFromDiscardToStrightController.move(targetStright);
+		if(error != null){
+			new IO().writeln("Error: " + error.toString());
+		}
+		this.showNextMessage(moveFromDiscardToStrightController);
 	}
-	
-	private void showBoard(MoveCardController placeCardController){
-		new BoardView(placeCardController).write();
+
+	private void showNextMessage(MoveCardController placeCardController){
+		if(placeCardController.gameFinished()){
+			new FinishedGameView(FinishedMessages.GOOD_FINISH.toString()).write();
+		}
+		else {
+			new BoardView(placeCardController).write();
+		}
 	}
 
 	@Override
 	public void visit(MoveFromStrightToStrightController moveFromStrightToStrightController) {
 		MoveStrightMovementView view = new MoveStrightMovementView();
 		Error error = null;
-		do{
-			int originStright = view.getOriginStright();
-			int targetStright = view.getTargetStright();
-			
-			error = moveFromStrightToStrightController.move(originStright, targetStright);
-			if(error != null){
-				new IO().writeln("Error: " + error.toString());
-			}
-		} while(error != null);
-		this.showBoard(moveFromStrightToStrightController);
+		int originStright = view.getOriginStright();
+		int targetStright = view.getTargetStright();
+
+		error = moveFromStrightToStrightController.move(originStright, targetStright);
+		if(error != null){
+			new IO().writeln("Error: " + error.toString());
+		}
+		this.showNextMessage(moveFromStrightToStrightController);
 	}
 
 	@Override
@@ -76,21 +78,19 @@ public class GameView implements PlaceCardControllerVisitor{
 		if(error != null){
 			new IO().writeln("Error: " + error.toString());
 		}
-		this.showBoard(moveFromDiscardToSuitController);
+		this.showNextMessage(moveFromDiscardToSuitController);
 	}
 
 	@Override
 	public void visit(MoveFromStrightToSuitController moveFromStrightToSuitController) {
 		MoveStrightMovementView view = new MoveStrightMovementView();
 		Error error = null;
-		do{
-			int originTarget = view.getOriginStright();
-			error = moveFromStrightToSuitController.move(originTarget);
-			if(error != null){
-				new IO().writeln("Error: " + error.toString());
-			}
-		} while(error != null);
-		this.showBoard(moveFromStrightToSuitController);
+		int originTarget = view.getOriginStright();
+		error = moveFromStrightToSuitController.move(originTarget);
+		if(error != null){
+			new IO().writeln("Error: " + error.toString());
+		}
+		this.showNextMessage(moveFromStrightToSuitController);
 	}
 
 	@Override
@@ -98,29 +98,25 @@ public class GameView implements PlaceCardControllerVisitor{
 		MoveStrightMovementView view = new MoveStrightMovementView();
 		MoveSuitMovementView viewSuit = new MoveSuitMovementView();
 		Error error = null;
-		do{
-			int targetStright = view.getTargetStright();
-			Suit originSuit = viewSuit.getOriginSuit();
-			
-			error = moveFromSuitToStrightController.move(originSuit, targetStright);
-			if(error != null){
-				new IO().writeln("Error: " + error.toString());
-			}
-		} while(error != null);
-		this.showBoard(moveFromSuitToStrightController);
+		int targetStright = view.getTargetStright();
+		Suit originSuit = viewSuit.getOriginSuit();
+
+		error = moveFromSuitToStrightController.move(originSuit, targetStright);
+		if(error != null){
+			new IO().writeln("Error: " + error.toString());
+		}
+		this.showNextMessage(moveFromSuitToStrightController);
 	}
 
 	@Override
 	public void visit(FaceUpCardInStrightController faceUpCardInStrightController) {
 		MoveStrightMovementView view = new MoveStrightMovementView();
 		Error error = null;
-		do{
-			int targetStright = view.getTargetStright();
-			error = faceUpCardInStrightController.move(targetStright);
-			if(error != null){
-				new IO().writeln("Error: " + error.toString());
-			}
-		} while(error != null);
-		this.showBoard(faceUpCardInStrightController);
+		int targetStright = view.getTargetStright();
+		error = faceUpCardInStrightController.move(targetStright);
+		if(error != null){
+			new IO().writeln("Error: " + error.toString());
+		}
+		this.showNextMessage(faceUpCardInStrightController);
 	}
 }

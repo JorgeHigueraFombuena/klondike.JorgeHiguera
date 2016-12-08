@@ -12,4 +12,6 @@ PresenterController
 	void accept(PlaceCardControllerVisitor colocateControllerVisitor);
 
 	Error movedPermited(List<Card> toPlaceCards, List<Card> placedCards, PlaceOfCard targerPlace);
+	
+	boolean gameFinished();
 }

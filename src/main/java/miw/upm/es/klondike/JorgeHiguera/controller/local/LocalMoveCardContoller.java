@@ -19,7 +19,7 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 		if(toPlaceCards.isEmpty() && placedCards.isEmpty()){
 			return Error.MOVEMENT_NOT_PERMITED;
 		}
-		Card placed = placedCards.isEmpty() ? null : placedCards.get(placedCards.size() - 1);
+		Card placed = placedCards == null || placedCards.isEmpty() ? null : placedCards.get(placedCards.size() - 1);
 		for(Card toPlace : toPlaceCards){
 			switch (targetPlace) {
 			case SUIT:
@@ -27,7 +27,7 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 					return null;
 				}
 				else if(placed != null && toPlace.getSuit().equals(placed.getSuit())
-						&& placed.getNumber() - toPlace.getNumber() == 1){
+						&& toPlace.getNumber() - placed.getNumber() == 1){
 					return null;
 				}
 				break;
@@ -50,6 +50,11 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 			}
 		}
 		return Error.MOVEMENT_NOT_PERMITED;
+	}
+	
+	@Override
+	public boolean gameFinished(){
+		return super.gameFinished();
 	}
 
 }

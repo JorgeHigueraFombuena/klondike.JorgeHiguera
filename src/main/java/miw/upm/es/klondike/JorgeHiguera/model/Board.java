@@ -167,7 +167,7 @@ public class Board {
 	}
 
 	public Card getFirstCardFromSuit(Suit suit) {
-		if (suits.get(suit).isEmpty()){
+		if (suit == null || suits.get(suit).isEmpty()){
 			return null;
 		}
 		else {
@@ -199,10 +199,18 @@ public class Board {
 
 	public Card getFirstCardOfStright(int stright) {
 		if(strights.get(stright).isEmpty()){
-		return null;
+			return null;
 		}
 		else {
-			return strights.get(strights).get(strights.get(stright).size() - 1);
+			return strights.get(stright).get(strights.get(stright).size() - 1);
 		}
+	}
+	
+	public boolean gameFinished(){
+		boolean finished = false;
+		for(Suit suit : suits.keySet()){
+			finished = finished && suits.get(suit).isEmpty();
+		}
+		return finished;
 	}
 }
