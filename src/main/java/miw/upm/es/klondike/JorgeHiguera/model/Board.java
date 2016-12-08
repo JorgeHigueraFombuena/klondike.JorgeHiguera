@@ -6,25 +6,25 @@ import java.util.List;
 import java.util.Map;
 
 public class Board {
-	
+
 	private Map<Integer, List<Card>> strights;
-	
+
 	private List<Card> discard;
-	
+
 	private List<Card> deck;
-	
+
 	private Map<Suit, List<Card>> suits;
-	
+
 	private final static int NUM_CARDS_PER_DRAW = 3;	
-	
+
 	public final static int NUM_STRIGHTS = 7;
-	
+
 	public final static int NUM_CARDS_PER_SUIT = 12;
 
 	public final static int ACE_NUMBER = 1;
 
 	public final static int KING_NUMBER = 12;
-	
+
 	public Board(){
 		suits = new HashMap<Suit, List<Card>>();
 		for(int i = 0; i < getSuit().length; i++){
@@ -37,7 +37,7 @@ public class Board {
 		discard = new ArrayList<Card>();
 		deck = new ArrayList<Card>();
 	}
-	
+
 	public Suit[] getSuit(){
 		return Suit.values();
 	}
@@ -53,7 +53,7 @@ public class Board {
 		deck.removeAll(tempList);
 		discard.addAll(tempList);
 	}
-	
+
 	public void moveFromDiscardToDeck(){
 		for(int i = discard.size() - 1; i >= 0; i--){
 			discard.get(i).setFaceDown(true);
@@ -66,20 +66,20 @@ public class Board {
 	public boolean isEmptyDeck() {
 		return deck.isEmpty();
 	}
-	
+
 
 	public List<Card> getDeck(){
 		return deck;
 	}
-	
+
 	public List<Card> getDiscard(){
 		return discard;
 	}
-	
+
 	public Map<Integer, List<Card>> getStrights(){
 		return strights;
 	}
-	
+
 	public Map<Suit, List<Card>> getSuits(){
 		return suits;
 	}
@@ -102,7 +102,7 @@ public class Board {
 
 	public List<Card> getFaceUpCardsOfStright(int stright) {
 		if(strights.get(stright).isEmpty()){
-			return null;
+			return new ArrayList<Card>();
 		}
 		else {
 			List<Card> cards = new ArrayList<Card>();
@@ -134,12 +134,19 @@ public class Board {
 	public void moveFromStrightToStright(int originStright, int targetStright) {
 		List<Card> originStrightCards = getFaceUpCardsOfStright(originStright);
 		List<Card> targetStrightCards = getFaceUpCardsOfStright(targetStright);
-		List<Card> toPlaceCards = this.getCardsMovedPermited(originStrightCards,
-				targetStrightCards.get(targetStrightCards.size() - 1));
+		List<Card> toPlaceCards = null;
+		if(targetStrightCards.isEmpty()){
+			toPlaceCards = this.getCardsMovedPermited(originStrightCards,
+					null);
+		}
+		else {
+			toPlaceCards = this.getCardsMovedPermited(originStrightCards,
+					targetStrightCards.get(targetStrightCards.size() - 1));
+		}
 		strights.get(originStright).removeAll(toPlaceCards);
 		strights.get(targetStright).addAll(toPlaceCards);
 	}
-	
+
 	private List<Card> getCardsMovedPermited(List<Card> toPlaceCards, Card placed){
 		List<Card> cards = new ArrayList<Card>();
 		boolean found = false;
@@ -205,11 +212,11 @@ public class Board {
 			return strights.get(stright).get(strights.get(stright).size() - 1);
 		}
 	}
-	
+
 	public boolean gameFinished(){
-		boolean finished = false;
+		boolean finished = true;
 		for(Suit suit : suits.keySet()){
-			finished = finished && suits.get(suit).isEmpty();
+			finished = finished && suits.get(suit).size() == NUM_CARDS_PER_SUIT;
 		}
 		return finished;
 	}
