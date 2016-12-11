@@ -1,16 +1,16 @@
 package miw.upm.es.klondike.model;
 
 public class Card {
-	
+
 	private Suit suit;
-	
+
 	private int number;
-	
+
 	private boolean faceDown;
-	
+
 	private PlaceOfCard place;
-	
-	public Card(Suit suit, int number, PlaceOfCard place){
+
+	public Card(Suit suit, int number, PlaceOfCard place) {
 		assert suit != null;
 		assert number > 0;
 		assert number <= 12;
@@ -19,8 +19,8 @@ public class Card {
 		this.number = number;
 		this.place = place;
 	}
-	
-	public Card(Suit suit, int number, PlaceOfCard place, boolean faceDown){
+
+	public Card(Suit suit, int number, PlaceOfCard place, boolean faceDown) {
 		this(suit, number, place);
 		this.faceDown = faceDown;
 	}
@@ -32,20 +32,20 @@ public class Card {
 	public int getNumber() {
 		return number;
 	}
-	
-	public boolean isFaceDown(){
+
+	public boolean isFaceDown() {
 		return faceDown;
 	}
 
-	public void setFaceDown(boolean faceDown){
+	public void setFaceDown(boolean faceDown) {
 		this.faceDown = faceDown;
 	}
-	
-	public PlaceOfCard getPlaceOfCard(){
+
+	public PlaceOfCard getPlaceOfCard() {
 		return place;
 	}
-	
-	public void setPlaceOfCard(PlaceOfCard place){
+
+	public void setPlaceOfCard(PlaceOfCard place) {
 		this.place = place;
 	}
 
@@ -59,7 +59,7 @@ public class Card {
 		result = prime * result + ((suit == null) ? 0 : suit.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -87,6 +87,5 @@ public class Card {
 	public boolean isAce() {
 		return number == Board.ACE_NUMBER;
 	}
-	
-	
+
 }

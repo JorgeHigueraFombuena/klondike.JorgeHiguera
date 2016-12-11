@@ -5,19 +5,19 @@ import miw.upm.es.klondike.controller.OperationController;
 import miw.upm.es.klondike.model.Game;
 
 public class LocalLogic implements Logic {
-	
+
 	private Game game;
-	
+
 	private LocalStartController startController;
-	
+
 	private LocalBuilderController builderController;
 
-	public LocalLogic(){
+	public LocalLogic() {
 		game = new Game();
 		builderController = new LocalBuilderController(game);
 		startController = new LocalStartController(game, builderController);
 	}
-	
+
 	@Override
 	public OperationController getOperationController() {
 		switch (game.getState()) {

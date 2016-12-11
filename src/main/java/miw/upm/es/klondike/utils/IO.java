@@ -6,8 +6,7 @@ import java.io.InputStreamReader;
 import miw.upm.es.klondike.controller.Error;
 
 public class IO {
-	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-			System.in));
+	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 	public String readString(String title) {
 		String input = null;
@@ -57,7 +56,7 @@ public class IO {
 		System.out.println();
 		flushOutpus();
 	}
-	
+
 	public void write(String string) {
 		System.out.print(string);
 		flushOutpus();
@@ -68,23 +67,22 @@ public class IO {
 		flushOutpus();
 	}
 
-	public void writeError(Error error){
+	public void writeError(Error error) {
 		System.err.println("ERROR!! " + error.toString());
 		flushOutpus();
 	}
-	
+
 	private void writeError(String formato) {
-		System.err.println("ERROR DE FORMATO! "
-				+ "Introduzca un valor con formato " + formato + ".");
+		System.err.println("ERROR DE FORMATO! " + "Introduzca un valor con formato " + formato + ".");
 		flushOutpus();
 	}
-	
-	public void writeEmpty(){
+
+	public void writeEmpty() {
 		write("<vacío>");
 		flushOutpus();
 	}
-	
-	private void flushOutpus(){
+
+	private void flushOutpus() {
 		System.err.flush();
 		System.out.flush();
 	}

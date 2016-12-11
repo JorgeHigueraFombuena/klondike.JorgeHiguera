@@ -29,18 +29,15 @@ public class LocalMoveFromStrightToSuitController extends LocalPlaceCardControll
 		Card placed = super.getFirstCardFromSuit(toPlace.getSuit());
 		List<Card> toPlaceCards = new ArrayList<Card>();
 		List<Card> placedCards = new ArrayList<Card>();
-		if(toPlace != null){
+		if (toPlace != null) {
 			toPlaceCards.add(toPlace);
 		}
-		if(placed != null){
+		if (placed != null) {
 			placedCards.add(placed);
 		}
 		Error error = super.movedPermited(toPlaceCards, placedCards, PlaceOfCard.SUIT);
-		if(error == null){
+		if (error == null) {
 			super.moveFromStrightToSuit(originStright);
-		}
-		else{
-			super.askOption();
 		}
 		return error;
 	}

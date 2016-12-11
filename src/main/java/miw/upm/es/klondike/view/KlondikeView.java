@@ -6,20 +6,20 @@ import miw.upm.es.klondike.controller.MoveCardController;
 import miw.upm.es.klondike.controller.OperationController;
 import miw.upm.es.klondike.controller.StartController;
 
-public class KlondikeView implements View{
+public class KlondikeView implements View {
 
 	private StartView startView;
-	
+
 	private GameView gameView;
-	
+
 	private AskOptionView askOptionView;
-	
-	public KlondikeView(){
+
+	public KlondikeView() {
 		startView = new StartView();
 		gameView = new GameView();
 		askOptionView = new AskOptionView();
 	}
-	
+
 	@Override
 	public void interact(OperationController operationalController) {
 		assert operationalController != null;

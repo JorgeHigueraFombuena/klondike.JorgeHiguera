@@ -13,80 +13,80 @@ import miw.upm.es.klondike.model.Suit;
 public class LocalController {
 
 	private Game game;
-	
-	public LocalController(Game game){
+
+	public LocalController(Game game) {
 		assert game != null;
 		this.game = game;
 	}
-	
-	public void moveFromDeckToDiscard(){
+
+	public void moveFromDeckToDiscard() {
 		game.moveFromDeckToDiscard();
 		askOption();
 	}
-	
-	public void moveFromDiscardToDeck(){
+
+	public void moveFromDiscardToDeck() {
 		game.moveFromDiscardToDeck();
 		askOption();
 	}
-	
-	public Error validateEmptyDeck(){
-		if(!game.isEmptyDeck()){
+
+	public Error validateEmptyDeck() {
+		if (!game.isEmptyDeck()) {
 			return Error.DECK_NO_EMPTY;
 		}
 		return Error.DECK_EMPTY;
 	}
-	
-	public Error validateEmptyDiscard(){
-		if(!game.isEmptyDiscard()){
+
+	public Error validateEmptyDiscard() {
+		if (!game.isEmptyDiscard()) {
 			return Error.DISCARD_NO_EMPTY;
 		}
 		return Error.DISCARD_EMPTY;
 	}
-	
-	public List<Card> getFaceUpCardsOfStright(int stright){
+
+	public List<Card> getFaceUpCardsOfStright(int stright) {
 		return game.getFaceUpCardsOfStright(stright);
 	}
-	
-	public Card getFirstCardOfStright(int stright){
+
+	public Card getFirstCardOfStright(int stright) {
 		return game.getFirstCardOfStright(stright);
 	}
-	
+
 	public Card getFirstCardFromDiscard() {
 		return game.getFirstCardFromDiscard();
 	}
-	
-	public Options getOptionSelected(){
+
+	public Options getOptionSelected() {
 		return game.getOptionSelected();
 	}
-	
-	public List<Card> getDeck(){
+
+	public List<Card> getDeck() {
 		return game.getDeck();
 	}
-	
-	public List<Card> getDiscard(){
+
+	public List<Card> getDiscard() {
 		return game.getDiscard();
 	}
-		
-	public State getState(){
+
+	public State getState() {
 		return game.getState();
 	}
-	
-	public void setState(State state){
+
+	public void setState(State state) {
 		game.setState(state);
 	}
-	
-	void changeAskOption(int option){
+
+	void changeAskOption(int option) {
 		game.changeAskOption(option);
 	}
-	
-	Options getSelectedOption(){
+
+	Options getSelectedOption() {
 		return game.getOptionSelected();
 	}
-	
-	public int getNumStrights(){
+
+	public int getNumStrights() {
 		return game.getNumStrights();
 	}
-	
+
 	public Map<Suit, List<Card>> getSuits() {
 		return game.getSuits();
 	}
@@ -94,59 +94,58 @@ public class LocalController {
 	public Map<Integer, List<Card>> getStrights() {
 		return game.getStrights();
 	}
-	
-	public void move(Card toPlace, int stright){
+
+	public void move(Card toPlace, int stright) {
 		game.moveFromDiscardToStright(toPlace, stright);
 		this.setState(State.ASK_OPERATION);
 	}
-	
-	public void moveFromStrightToStright(int originStright, int targetStright){
+
+	public void moveFromStrightToStright(int originStright, int targetStright) {
 		game.moveFromStrightToStright(originStright, targetStright);
 		this.askOption();
 	}
-	
+
 	public void changeState() {
-		if(this.getSelectedOption() != Options.EXIT){
+		if (this.getSelectedOption() != Options.EXIT) {
 			this.setState(State.IN_GAME);
-		}
-		else{
+		} else {
 			this.setState(State.FINISHED);
 		}
 	}
-	
-	public void askOption(){
+
+	public void askOption() {
 		this.setState(State.ASK_OPERATION);
 	}
-	
-	public Card getFirstCardFromSuit(Suit suit){
+
+	public Card getFirstCardFromSuit(Suit suit) {
 		return game.getFirstCardFromSuit(suit);
 	}
-	
-	public void moveFromDiscardToSuit(Card toPlace){
+
+	public void moveFromDiscardToSuit(Card toPlace) {
 		game.moveFromDiscardToSuit(toPlace);
 		askOption();
 	}
-	
+
 	public void moveFromStrightToSuit(int originStright) {
 		game.moveFromStrightToSuit(originStright);
 		askOption();
 	}
-	
+
 	public void moveFromSuitToStright(Suit originSuit, int targetStright) {
 		game.moveFromSuitToStright(originSuit, targetStright);
 		askOption();
 	}
-	
+
 	public void faceUpCard(int targetStright) {
 		game.faceUpCard(targetStright);
 		askOption();
 	}
-	
-	public boolean gameFinished(){
+
+	public boolean gameFinished() {
 		return game.gameFinished();
 	}
-	
-	public void finishTheGame(){
+
+	public void finishTheGame() {
 		game.finishTheGame();
 	}
 }

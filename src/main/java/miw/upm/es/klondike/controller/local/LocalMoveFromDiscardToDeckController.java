@@ -6,8 +6,8 @@ import miw.upm.es.klondike.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.model.Game;
 
-public class LocalMoveFromDiscardToDeckController extends LocalMoveCardContoller 
-implements MoveFromDiscardToDeckController{
+public class LocalMoveFromDiscardToDeckController extends LocalMoveCardContoller
+		implements MoveFromDiscardToDeckController {
 
 	public LocalMoveFromDiscardToDeckController(Game game) {
 		super(game);
@@ -20,13 +20,25 @@ implements MoveFromDiscardToDeckController{
 
 	@Override
 	public Error move() {
-		super.moveFromDiscardToDeck();
-		return null;
+		Error error = movedPermited();
+		if (error != null) {
+			super.moveFromDiscardToDeck();
+		}
+		return error;
 	}
 
 	@Override
 	public void accept(OperationControllerVisitor operationalControllerVisitor) {
 		operationalControllerVisitor.visit(this);
+	}
+
+	@Override
+	public Error movedPermited() {
+		Error error = super.validateEmptyDiscard();
+		if (error == Error.DISCARD_EMPTY) {
+			return error;
+		}
+		return super.validateEmptyDeck() == Error.DECK_NO_EMPTY ? Error.DECK_NO_EMPTY : null;
 	}
 
 }

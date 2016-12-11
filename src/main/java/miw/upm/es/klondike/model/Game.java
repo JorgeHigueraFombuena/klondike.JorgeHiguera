@@ -4,18 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Game {
-	
+
 	private State state;
-	
+
 	private Board board;
-	
+
 	private Options optionSelected;
 
-	public Game(){
+	public Game() {
 		state = State.INITIAL;
 		board = new Board();
 	}
-	
+
 	public void moveFromDeckToDiscard() {
 		board.moveFromDeckToDiscard();
 	}
@@ -23,28 +23,28 @@ public class Game {
 	public boolean isEmptyDeck() {
 		return board.isEmptyDeck();
 	}
-	
-	public List<Card> getDeck(){
+
+	public List<Card> getDeck() {
 		return board.getDeck();
 	}
-	
-	public List<Card> getDiscard(){
+
+	public List<Card> getDiscard() {
 		return board.getDiscard();
 	}
-	
-	public Map<Integer, List<Card>> getStrights(){
+
+	public Map<Integer, List<Card>> getStrights() {
 		return board.getStrights();
 	}
-	
-	public Map<Suit, List<Card>> getSuits(){
+
+	public Map<Suit, List<Card>> getSuits() {
 		return board.getSuits();
 	}
-	
-	public State getState(){
+
+	public State getState() {
 		return state;
 	}
-	
-	public Options getOptionSelected(){
+
+	public Options getOptionSelected() {
 		return optionSelected;
 	}
 
@@ -57,7 +57,8 @@ public class Game {
 	}
 
 	public void setState(State state) {
-		this.state = state;;
+		this.state = state;
+		;
 	}
 
 	public void changeAskOption(int option) {
@@ -75,7 +76,7 @@ public class Game {
 	public int getNumStrights() {
 		return board.getNumStrights();
 	}
-	
+
 	public List<Card> getFaceUpCardsOfStright(int stright) {
 		return board.getFaceUpCardsOfStright(stright);
 	}
@@ -116,13 +117,12 @@ public class Game {
 		return board.getFirstCardOfStright(stright);
 	}
 
-	public boolean gameFinished(){
+	public boolean gameFinished() {
 		return board.gameFinished();
 	}
 
 	public void finishTheGame() {
 		state = State.FINISHED;
 	}
-	
-	
+
 }

@@ -13,12 +13,12 @@ public class BoardView {
 
 	private PresenterController controller;
 
-	public BoardView(PresenterController controller){
+	public BoardView(PresenterController controller) {
 		assert controller != null;
 		this.controller = controller;
 	}
 
-	public void write(){
+	public void write() {
 		writeDeck(controller.getDeck());
 		writeDiscard(controller.getDiscard());
 		writeSuits(controller.getSuits());
@@ -29,10 +29,9 @@ public class BoardView {
 		IO io = new IO();
 		io.writeln("======================================");
 		io.write("Baraja: ");
-		if(deck.isEmpty()){
+		if (deck.isEmpty()) {
 			io.writeEmpty();
-		}
-		else{
+		} else {
 			(new CardView(deck.get(0))).write();
 		}
 		io.writeln();
@@ -41,11 +40,10 @@ public class BoardView {
 	private void writeDiscard(List<Card> discard) {
 		IO io = new IO();
 		io.write("Descarte: ");
-		if(discard.isEmpty()){
+		if (discard.isEmpty()) {
 			io.writeEmpty();
-		}
-		else{
-			for(Card card : discard){
+		} else {
+			for (Card card : discard) {
 				(new CardView(card)).write();
 			}
 		}
@@ -54,7 +52,7 @@ public class BoardView {
 
 	private void writeStrights(Map<Integer, List<Card>> strights) {
 		IO io = new IO();
-		for(Entry<Integer, List<Card>> entry : strights.entrySet()){
+		for (Entry<Integer, List<Card>> entry : strights.entrySet()) {
 			io.write("Escalera " + entry.getKey() + ": ");
 			writeListOfCards(entry.getValue());
 			io.writeln();
@@ -63,9 +61,9 @@ public class BoardView {
 
 	private void writeSuits(Map<Suit, List<Card>> suits) {
 		IO io = new IO();
-		for(Entry<Suit, List<Card>> entry : suits.entrySet()){
+		for (Entry<Suit, List<Card>> entry : suits.entrySet()) {
 			io.write("Palo " + entry.getKey().toString() + ": ");
-			if(entry.getValue().isEmpty()){
+			if (entry.getValue().isEmpty()) {
 				io.writeEmpty();
 			}
 			writeListOfCards(entry.getValue());
@@ -73,20 +71,18 @@ public class BoardView {
 		}
 	}
 
-	private void writeListOfCards(List<Card> list){
-		if(list.isEmpty()){
+	private void writeListOfCards(List<Card> list) {
+		if (list.isEmpty()) {
 			new IO().writeEmpty();
-		}
-		else {
-			for(Card card : list){
-				(new CardView(card, true, 
-						isLastCardOfStright(card, list))).write();
+		} else {
+			for (Card card : list) {
+				(new CardView(card, true, isLastCardOfStright(card, list))).write();
 			}
 		}
 	}
 
-	private boolean isLastCardOfStright(Card card, List<Card> list){
-		return list.get(list.size()-1).equals(card);
+	private boolean isLastCardOfStright(Card card, List<Card> list) {
+		return list.get(list.size() - 1).equals(card);
 	}
 
 }

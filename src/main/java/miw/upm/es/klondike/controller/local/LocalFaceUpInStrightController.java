@@ -22,10 +22,9 @@ public class LocalFaceUpInStrightController extends LocalPlaceCardController imp
 	public Error move(int targetStright) {
 		Card toFaceUp = super.getFirstCardOfStright(targetStright);
 		Error error = super.faceUpPermited(toFaceUp);
-		if(error == null){
+		if (error == null) {
 			super.faceUpCard(targetStright);
-		}
-		else{
+		} else {
 			super.askOption();
 		}
 		return error;

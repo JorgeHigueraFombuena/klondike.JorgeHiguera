@@ -25,14 +25,11 @@ public class LocalMoveFromStrightToStrightController extends LocalPlaceCardContr
 	@Override
 	public Error move(int originStright, int targetStright) {
 		List<Card> placedCards = super.getFaceUpCardsOfStright(targetStright);
-		List<Card> toPlaceCards =super.getFaceUpCardsOfStright(originStright);
-		
+		List<Card> toPlaceCards = super.getFaceUpCardsOfStright(originStright);
+
 		Error error = super.movedPermited(toPlaceCards, placedCards, PlaceOfCard.STRIGHT);
-		if(error == null){
+		if (error == null) {
 			super.moveFromStrightToStright(originStright, targetStright);
-		}
-		else {
-			super.askOption();
 		}
 		return error;
 	}

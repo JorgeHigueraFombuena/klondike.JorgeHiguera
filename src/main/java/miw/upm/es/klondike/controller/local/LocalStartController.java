@@ -9,7 +9,7 @@ import miw.upm.es.klondike.model.State;
 public class LocalStartController extends LocalOperationController implements StartController {
 
 	private BuilderController builder;
-	
+
 	public LocalStartController(Game game, BuilderController builder) {
 		super(game);
 		assert builder != null;

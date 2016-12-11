@@ -8,7 +8,7 @@ import miw.upm.es.klondike.model.Game;
 
 public class LocalMoveFromDeckToDiscardController extends LocalMoveCardContoller
 		implements MoveFromDeckToDiscardController {
-	
+
 	public LocalMoveFromDeckToDiscardController(Game game) {
 		super(game);
 	}
@@ -25,9 +25,16 @@ public class LocalMoveFromDeckToDiscardController extends LocalMoveCardContoller
 
 	@Override
 	public Error move() {
-		super.moveFromDeckToDiscard();
-		return null;
+		Error error = movedPermited();
+		if (error == null) {
+			super.moveFromDeckToDiscard();
+		}
+		return error;
 	}
 
+	@Override
+	public Error movedPermited() {
+		return super.validateEmptyDeck() == Error.DECK_EMPTY ? Error.DECK_EMPTY : null;
+	}
 
 }
