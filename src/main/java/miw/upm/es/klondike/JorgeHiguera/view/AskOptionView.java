@@ -20,7 +20,7 @@ public class AskOptionView implements AskOperationControllerVisitor {
 		option = new LimitedIntDialog("Opción?", 1, Options.values().length).read() - 1;
 		error = askOperationController.isValidOptionSelected(option);
 		if(error != null){
-			io.writeln("Error: " + error.toString());
+			io.writeError(error);
 		}
 
 		askOperationController.askFor(option);

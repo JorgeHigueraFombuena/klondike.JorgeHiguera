@@ -11,10 +11,6 @@ import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToSuitControll
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToSuitController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromSuitToStrightController;
-import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
-
-import java.awt.PageAttributes.OriginType;
-
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 import miw.upm.es.klondike.JorgeHiguera.controller.FaceUpCardInStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
@@ -44,14 +40,14 @@ public class GameView implements PlaceCardControllerVisitor{
 		int targetStright = view.getTargetStright();
 		error = moveFromDiscardToStrightController.move(targetStright);
 		if(error != null){
-			new IO().writeln("Error: " + error.toString());
+			(new IO()).writeError(error);
 		}
 		this.showNextMessage(moveFromDiscardToStrightController);
 	}
 
 	private void showNextMessage(MoveCardController placeCardController){
 		if(placeCardController.gameFinished()){
-			new FinishedGameView(FinishedMessages.GOOD_FINISH.toString()).write();
+			new FinishedGameView(FinishedMessages.GOOD_FINISH.toString()).writeln();
 		}
 		else {
 			new BoardView(placeCardController).write();
@@ -67,7 +63,7 @@ public class GameView implements PlaceCardControllerVisitor{
 
 		error = moveFromStrightToStrightController.move(originStright, targetStright);
 		if(error != null){
-			new IO().writeln("Error: " + error.toString());
+			(new IO()).writeError(error);
 		}
 		this.showNextMessage(moveFromStrightToStrightController);
 	}
@@ -76,7 +72,7 @@ public class GameView implements PlaceCardControllerVisitor{
 	public void visit(MoveFromDiscardToSuitController moveFromDiscardToSuitController) {
 		Error error = moveFromDiscardToSuitController.move();
 		if(error != null){
-			new IO().writeln("Error: " + error.toString());
+			(new IO()).writeError(error);
 		}
 		this.showNextMessage(moveFromDiscardToSuitController);
 	}
@@ -88,7 +84,7 @@ public class GameView implements PlaceCardControllerVisitor{
 		int originTarget = view.getOriginStright();
 		error = moveFromStrightToSuitController.move(originTarget);
 		if(error != null){
-			new IO().writeln("Error: " + error.toString());
+			(new IO()).writeError(error);
 		}
 		this.showNextMessage(moveFromStrightToSuitController);
 	}
@@ -103,7 +99,7 @@ public class GameView implements PlaceCardControllerVisitor{
 
 		error = moveFromSuitToStrightController.move(originSuit, targetStright);
 		if(error != null){
-			new IO().writeln("Error: " + error.toString());
+			(new IO()).writeError(error);
 		}
 		this.showNextMessage(moveFromSuitToStrightController);
 	}
@@ -115,7 +111,7 @@ public class GameView implements PlaceCardControllerVisitor{
 		int targetStright = view.getTargetStright();
 		error = faceUpCardInStrightController.move(targetStright);
 		if(error != null){
-			new IO().writeln("Error: " + error.toString());
+			(new IO()).writeError(error);
 		}
 		this.showNextMessage(faceUpCardInStrightController);
 	}

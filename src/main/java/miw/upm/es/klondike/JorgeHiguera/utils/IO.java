@@ -2,6 +2,7 @@ package miw.upm.es.klondike.JorgeHiguera.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import miw.upm.es.klondike.JorgeHiguera.controller.Error;
 
 public class IO {
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
@@ -53,22 +54,37 @@ public class IO {
 
 	public void writeln() {
 		System.out.println();
+		flushOutpus();
 	}
 	
 	public void write(String string) {
 		System.out.print(string);
+		flushOutpus();
 	}
 
 	public void writeln(String string) {
 		System.out.println(string);
+		flushOutpus();
 	}
 
+	public void writeError(Error error){
+		System.err.println("ERROR!! " + error.toString());
+		flushOutpus();
+	}
+	
 	private void writeError(String formato) {
 		System.err.println("ERROR DE FORMATO! "
 				+ "Introduzca un valor con formato " + formato + ".");
+		flushOutpus();
 	}
 	
 	public void writeEmpty(){
 		write("<vacío>");
+		flushOutpus();
+	}
+	
+	private void flushOutpus(){
+		System.err.flush();
+		System.out.flush();
 	}
 }

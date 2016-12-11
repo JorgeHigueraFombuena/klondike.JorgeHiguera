@@ -11,8 +11,8 @@ public class FinishedGameView {
 		this.message = message;
 	}
 	
-	public void write(){
+	public void writeln(){
 		IO io = new IO();
-		io.write(message);
+		io.writeln(message);
 	}
 }
