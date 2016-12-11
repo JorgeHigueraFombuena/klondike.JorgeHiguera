@@ -1,9 +1,7 @@
 package miw.upm.es.klondike.JorgeHiguera.controller.local;
 
 import miw.upm.es.klondike.JorgeHiguera.Logic;
-import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
-import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.model.Game;
 
 public class LocalLogic implements Logic {
@@ -20,6 +18,7 @@ public class LocalLogic implements Logic {
 		startController = new LocalStartController(game, builderController);
 	}
 	
+	@Override
 	public OperationController getOperationController() {
 		switch (game.getState()) {
 		case INITIAL:

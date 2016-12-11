@@ -1,7 +1,6 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
 import miw.upm.es.klondike.JorgeHiguera.View;
-import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.AskOperationController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;

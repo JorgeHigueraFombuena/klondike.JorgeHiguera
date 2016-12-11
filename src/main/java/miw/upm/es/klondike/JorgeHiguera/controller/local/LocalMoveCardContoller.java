@@ -23,33 +23,43 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 		for(Card toPlace : toPlaceCards){
 			switch (targetPlace) {
 			case SUIT:
-				if(placed == null && toPlace.isAce()){
-					return null;
-				}
-				else if(placed != null && toPlace.getSuit().equals(placed.getSuit())
-						&& toPlace.getNumber() - placed.getNumber() == 1){
-					return null;
-				}
-				break;
-
+				return movedPermitedToSuit(placed, toPlace);
 			case STRIGHT:
-				if(placed == null && toPlace.isKing()){
-					return null;
-				}
-				else if(placed != null && placed.isFaceDown() && toPlace.isKing()){
-					return null;
-				}
-				else if(placed != null && !toPlace.getSuit().equals(placed.getSuit())
-						&& placed.getNumber() - toPlace.getNumber() == 1){
-					return null;
-				}
-				break;
-
+				return movedPermitedToStright(placed, toPlace);
 			default:
 				return Error.MOVEMENT_NOT_PERMITED;
 			}
 		}
 		return Error.MOVEMENT_NOT_PERMITED;
+	}
+	
+	private Error movedPermitedToSuit(Card placed, Card toPlace){
+		if(placed == null && toPlace.isAce()){
+			return null;
+		}
+		else if(placed != null && toPlace.getSuit().equals(placed.getSuit())
+				&& toPlace.getNumber() - placed.getNumber() == 1){
+			return null;
+		}
+		else {
+			return Error.MOVEMENT_NOT_PERMITED;
+		}
+	}
+	
+	private Error movedPermitedToStright(Card placed, Card toPlace){
+		if(placed == null && toPlace.isKing()){
+			return null;
+		}
+		else if(placed != null && placed.isFaceDown() && toPlace.isKing()){
+			return null;
+		}
+		else if(placed != null && !toPlace.getSuit().equals(placed.getSuit())
+				&& placed.getNumber() - toPlace.getNumber() == 1){
+			return null;
+		}
+		else {
+			return Error.MOVEMENT_NOT_PERMITED;
+		}
 	}
 	
 	@Override

@@ -60,6 +60,26 @@ public class Card {
 		return result;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Card other = (Card) obj;
+		if (faceDown != other.faceDown)
+			return false;
+		if (number != other.number)
+			return false;
+		if (place != other.place)
+			return false;
+		if (suit != other.suit)
+			return false;
+		return true;
+	}
+
 	public boolean isKing() {
 		return number == Board.KING_NUMBER;
 	}

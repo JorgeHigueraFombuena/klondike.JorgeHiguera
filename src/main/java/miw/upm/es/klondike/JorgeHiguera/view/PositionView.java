@@ -1,6 +1,5 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
-import miw.upm.es.klondike.JorgeHiguera.model.Board;
 import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 import miw.upm.es.klondike.JorgeHiguera.utils.LimitedIntDialog;
@@ -55,7 +54,7 @@ public class PositionView {
 	
 	void readSuit(){
 		io.writeln(title);
-		suit = new LimitedSuitDialog(limitDialogTitle).read();
+		suit = new LimitedSuitDialog().read();
 	}
 	
 }

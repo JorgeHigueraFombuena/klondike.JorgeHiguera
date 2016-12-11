@@ -4,12 +4,9 @@ import miw.upm.es.klondike.JorgeHiguera.model.Suit;
 
 public class LimitedSuitDialog {
 
-	private String title;
-
 	private ClosedSuitIntervalView limitView;
 
-	public LimitedSuitDialog(String title){
-		this.title = title;
+	public LimitedSuitDialog(){
 		this.limitView = new ClosedSuitIntervalView("El valor debe estar entre ");
 	}
 

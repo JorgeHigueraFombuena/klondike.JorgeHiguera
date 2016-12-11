@@ -1,6 +1,5 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
-import miw.upm.es.klondike.JorgeHiguera.controller.PresenterController;
 import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 
 public class FinishedGameView {

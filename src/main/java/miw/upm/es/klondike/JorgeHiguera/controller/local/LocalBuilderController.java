@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.BuilderController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationController;
@@ -27,6 +26,7 @@ public class LocalBuilderController implements BuilderController{
 		this.game = game;
 	}
 
+	@Override
 	public void build() {
 		List<Card> deck = initDeck();
 		game.setStrights(initStrights(deck));
@@ -99,7 +99,6 @@ public class LocalBuilderController implements BuilderController{
 	}
 	
 	public LocalOperationController getOperationController(Options option){
-		//TODO: elegir opcion
 		return operations[option.ordinal()];
 	}
 

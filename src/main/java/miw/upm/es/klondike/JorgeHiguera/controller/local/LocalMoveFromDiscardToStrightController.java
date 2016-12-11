@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import miw.upm.es.klondike.JorgeHiguera.controller.Error;
-import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.OperationControllerVisitor;
 import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;

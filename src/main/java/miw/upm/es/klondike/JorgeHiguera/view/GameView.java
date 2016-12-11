@@ -1,9 +1,8 @@
 package miw.upm.es.klondike.JorgeHiguera.view;
 
-import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
-import miw.upm.es.klondike.JorgeHiguera.model.FinishedMessages;
-import miw.upm.es.klondike.JorgeHiguera.model.Suit;
-import miw.upm.es.klondike.JorgeHiguera.utils.IO;
+import miw.upm.es.klondike.JorgeHiguera.controller.Error;
+import miw.upm.es.klondike.JorgeHiguera.controller.FaceUpCardInStrightController;
+import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToDeckController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToStrightController;
@@ -11,9 +10,10 @@ import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromDiscardToSuitControll
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToStrightController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromStrightToSuitController;
 import miw.upm.es.klondike.JorgeHiguera.controller.MoveFromSuitToStrightController;
-import miw.upm.es.klondike.JorgeHiguera.controller.Error;
-import miw.upm.es.klondike.JorgeHiguera.controller.FaceUpCardInStrightController;
-import miw.upm.es.klondike.JorgeHiguera.controller.MoveCardController;
+import miw.upm.es.klondike.JorgeHiguera.controller.PlaceCardControllerVisitor;
+import miw.upm.es.klondike.JorgeHiguera.model.FinishedMessages;
+import miw.upm.es.klondike.JorgeHiguera.model.Suit;
+import miw.upm.es.klondike.JorgeHiguera.utils.IO;
 
 public class GameView implements PlaceCardControllerVisitor{
 

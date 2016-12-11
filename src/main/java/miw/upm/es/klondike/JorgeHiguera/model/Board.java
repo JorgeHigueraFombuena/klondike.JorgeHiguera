@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Board {
 
@@ -149,8 +150,16 @@ public class Board {
 
 	private List<Card> getCardsMovedPermited(List<Card> toPlaceCards, Card placed){
 		List<Card> cards = new ArrayList<Card>();
-		boolean found = false;
+		int i = getFirstCardPermitedToMove(toPlaceCards, placed);
+		for(int j = i; j < toPlaceCards.size(); j++){
+			cards.add(toPlaceCards.get(j));
+		}
+		return cards;
+	}
+	
+	private int getFirstCardPermitedToMove(List<Card> toPlaceCards, Card placed){
 		int i = 0;
+		boolean found = false;
 		while(i < toPlaceCards.size() && !found){
 			Card toPlace = toPlaceCards.get(i);
 			if(placed == null && toPlace.isKing()){
@@ -167,10 +176,7 @@ public class Board {
 				i++;
 			}
 		}
-		for(int j = i; j < toPlaceCards.size(); j++){
-			cards.add(toPlaceCards.get(j));
-		}
-		return cards;
+		return i;
 	}
 
 	public Card getFirstCardFromSuit(Suit suit) {
@@ -215,8 +221,8 @@ public class Board {
 
 	public boolean gameFinished(){
 		boolean finished = true;
-		for(Suit suit : suits.keySet()){
-			finished = finished && suits.get(suit).size() == NUM_CARDS_PER_SUIT;
+		for(Entry<Suit, List<Card>> suitWithCards : suits.entrySet()){
+			finished = finished && suitWithCards.getValue().size() == NUM_CARDS_PER_SUIT;
 		}
 		return finished;
 	}
