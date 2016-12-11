@@ -20,17 +20,20 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 			return Error.MOVEMENT_NOT_PERMITED;
 		}
 		Card placed = placedCards == null || placedCards.isEmpty() ? null : placedCards.get(placedCards.size() - 1);
+		Error error = Error.MOVEMENT_NOT_PERMITED;
 		for(Card toPlace : toPlaceCards){
 			switch (targetPlace) {
 			case SUIT:
-				return movedPermitedToSuit(placed, toPlace);
+				error = movedPermitedToSuit(placed, toPlace);
+				break;
 			case STRIGHT:
-				return movedPermitedToStright(placed, toPlace);
+				error = movedPermitedToStright(placed, toPlace);
+				break;
 			default:
-				return Error.MOVEMENT_NOT_PERMITED;
+				error = Error.MOVEMENT_NOT_PERMITED;
 			}
 		}
-		return Error.MOVEMENT_NOT_PERMITED;
+		return error;
 	}
 	
 	private Error movedPermitedToSuit(Card placed, Card toPlace){
@@ -42,7 +45,7 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 			return null;
 		}
 		else {
-			return Error.MOVEMENT_NOT_PERMITED;
+			return null;
 		}
 	}
 	
@@ -58,7 +61,7 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 			return null;
 		}
 		else {
-			return Error.MOVEMENT_NOT_PERMITED;
+			return null;
 		}
 	}
 	

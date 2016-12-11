@@ -202,6 +202,7 @@ public class Board {
 
 	public void moveFromSuitToStright(Suit originSuit, int targetStright) {
 		Card toPlace = suits.get(originSuit).get(suits.get(originSuit).size()-1);
+		suits.get(originSuit).remove(suits.get(originSuit).size()-1);
 		toPlace.setPlaceOfCard(PlaceOfCard.STRIGHT);
 		strights.get(targetStright).add(toPlace);
 	}
