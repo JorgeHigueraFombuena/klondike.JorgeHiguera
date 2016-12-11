@@ -55,7 +55,7 @@ public class Board {
 	}
 
 	public void moveFromDiscardToDeck(){
-		for(int i = discard.size() - 1; i >= 0; i--){
+		for(int i = 0; i < discard.size(); i++){
 			discard.get(i).setFaceDown(true);
 			discard.get(i).setPlaceOfCard(PlaceOfCard.DECK);;
 			deck.add(discard.get(i));
