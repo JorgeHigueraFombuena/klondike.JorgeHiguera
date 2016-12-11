@@ -56,5 +56,10 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 	public boolean gameFinished(){
 		return super.gameFinished();
 	}
+	
+	@Override
+	public void finishTheGame(){
+		super.finishTheGame();
+	}
 
 }

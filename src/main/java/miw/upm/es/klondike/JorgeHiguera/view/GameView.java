@@ -48,6 +48,7 @@ public class GameView implements PlaceCardControllerVisitor{
 	private void showNextMessage(MoveCardController placeCardController){
 		if(placeCardController.gameFinished()){
 			new FinishedGameView(FinishedMessages.GOOD_FINISH.toString()).writeln();
+			placeCardController.finishTheGame();
 		}
 		else {
 			new BoardView(placeCardController).write();

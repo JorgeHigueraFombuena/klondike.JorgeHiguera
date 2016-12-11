@@ -145,4 +145,8 @@ public class LocalController {
 	public boolean gameFinished(){
 		return game.gameFinished();
 	}
+	
+	public void finishTheGame(){
+		game.finishTheGame();
+	}
 }

@@ -14,4 +14,6 @@ PresenterController
 	Error movedPermited(List<Card> toPlaceCards, List<Card> placedCards, PlaceOfCard targerPlace);
 	
 	boolean gameFinished();
+	
+	void finishTheGame();
 }

@@ -119,4 +119,10 @@ public class Game {
 	public boolean gameFinished(){
 		return board.gameFinished();
 	}
+
+	public void finishTheGame() {
+		state = State.FINISHED;
+	}
+	
+	
 }
