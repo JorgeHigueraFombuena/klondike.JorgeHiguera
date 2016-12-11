@@ -24,10 +24,16 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 		for(Card toPlace : toPlaceCards){
 			switch (targetPlace) {
 			case SUIT:
-				error = movedPermitedToSuit(placed, toPlace);
+				Error errorAux = movedPermitedToSuit(placed, toPlace);
+				if(errorAux == null){
+					error = errorAux;
+				}
 				break;
 			case STRIGHT:
-				error = movedPermitedToStright(placed, toPlace);
+				errorAux = movedPermitedToStright(placed, toPlace);
+				if(errorAux == null){
+					error = errorAux;
+				}
 				break;
 			default:
 				error = Error.MOVEMENT_NOT_PERMITED;
@@ -45,7 +51,7 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 			return null;
 		}
 		else {
-			return null;
+			return Error.MOVEMENT_NOT_PERMITED;
 		}
 	}
 	
@@ -61,7 +67,7 @@ public abstract class LocalMoveCardContoller extends LocalOperationController im
 			return null;
 		}
 		else {
-			return null;
+			return Error.MOVEMENT_NOT_PERMITED;
 		}
 	}
 	
