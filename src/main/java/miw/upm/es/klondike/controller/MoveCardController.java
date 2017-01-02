@@ -9,8 +9,6 @@ public interface MoveCardController extends OperationController, PresenterContro
 
 	void accept(PlaceCardControllerVisitor colocateControllerVisitor);
 
-	Error movedPermited(List<Card> toPlaceCards, List<Card> placedCards, PlaceOfCard targerPlace);
-
 	boolean gameFinished();
 
 	void finishTheGame();

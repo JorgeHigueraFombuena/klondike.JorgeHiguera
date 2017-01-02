@@ -11,7 +11,7 @@ import miw.upm.es.klondike.model.Card;
 import miw.upm.es.klondike.model.Game;
 import miw.upm.es.klondike.model.PlaceOfCard;
 
-public class LocalMoveFromDiscardToSuitController extends LocalMoveCardContoller
+public class LocalMoveFromDiscardToSuitController extends LocalPlaceCardController
 implements MoveFromDiscardToSuitController {
 
 	public LocalMoveFromDiscardToSuitController(Game game) {
