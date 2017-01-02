@@ -1,9 +1,9 @@
 package miw.upm.es.klondike.controller.local;
 
 import miw.upm.es.klondike.controller.Error;
+import miw.upm.es.klondike.controller.MoveCardControllerVisitor;
 import miw.upm.es.klondike.controller.MoveFromDeckToDiscardController;
 import miw.upm.es.klondike.controller.OperationControllerVisitor;
-import miw.upm.es.klondike.controller.MoveCardControllerVisitor;
 import miw.upm.es.klondike.model.Game;
 
 public class LocalMoveFromDeckToDiscardController extends LocalMoveCardContoller

@@ -13,7 +13,7 @@ public abstract class LocalPlaceCardController extends LocalMoveCardContoller im
 	public LocalPlaceCardController(Game game) {
 		super(game);
 	}
-	
+
 	@Override
 	public Error movedPermited(List<Card> toPlaceCards, List<Card> placedCards, PlaceOfCard targetPlace) {
 		if (toPlaceCards.isEmpty() && placedCards.isEmpty()) {
