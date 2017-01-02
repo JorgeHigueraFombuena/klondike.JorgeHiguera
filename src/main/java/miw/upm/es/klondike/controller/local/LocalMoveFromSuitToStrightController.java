@@ -6,7 +6,7 @@ import java.util.List;
 import miw.upm.es.klondike.controller.Error;
 import miw.upm.es.klondike.controller.MoveFromSuitToStrightController;
 import miw.upm.es.klondike.controller.OperationControllerVisitor;
-import miw.upm.es.klondike.controller.PlaceCardControllerVisitor;
+import miw.upm.es.klondike.controller.MoveCardControllerVisitor;
 import miw.upm.es.klondike.model.Card;
 import miw.upm.es.klondike.model.Game;
 import miw.upm.es.klondike.model.PlaceOfCard;
@@ -20,7 +20,7 @@ public class LocalMoveFromSuitToStrightController extends LocalPlaceCardControll
 	}
 
 	@Override
-	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
+	public void accept(MoveCardControllerVisitor colocateControllerVisitor) {
 		colocateControllerVisitor.visit(this);
 	}
 

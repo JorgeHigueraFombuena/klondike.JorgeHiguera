@@ -7,7 +7,7 @@ import miw.upm.es.klondike.model.PlaceOfCard;
 
 public interface MoveCardController extends OperationController, PresenterController {
 
-	void accept(PlaceCardControllerVisitor colocateControllerVisitor);
+	void accept(MoveCardControllerVisitor colocateControllerVisitor);
 
 	boolean gameFinished();
 

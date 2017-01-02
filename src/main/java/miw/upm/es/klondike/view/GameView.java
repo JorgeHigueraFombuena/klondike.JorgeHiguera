@@ -10,12 +10,12 @@ import miw.upm.es.klondike.controller.MoveFromDiscardToSuitController;
 import miw.upm.es.klondike.controller.MoveFromStrightToStrightController;
 import miw.upm.es.klondike.controller.MoveFromStrightToSuitController;
 import miw.upm.es.klondike.controller.MoveFromSuitToStrightController;
-import miw.upm.es.klondike.controller.PlaceCardControllerVisitor;
+import miw.upm.es.klondike.controller.MoveCardControllerVisitor;
 import miw.upm.es.klondike.model.FinishedMessages;
 import miw.upm.es.klondike.model.Suit;
 import miw.upm.es.klondike.utils.IO;
 
-public class GameView implements PlaceCardControllerVisitor {
+public class GameView implements MoveCardControllerVisitor {
 
 	public void interact(MoveCardController moveCardController) {
 		moveCardController.accept(this);

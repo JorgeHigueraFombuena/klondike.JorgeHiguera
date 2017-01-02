@@ -1,6 +1,6 @@
 package miw.upm.es.klondike.controller;
 
-public interface PlaceCardControllerVisitor {
+public interface MoveCardControllerVisitor {
 
 	public void visit(MoveFromDeckToDiscardController moveFromDeckToDiscardController);
 

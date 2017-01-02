@@ -3,7 +3,7 @@ package miw.upm.es.klondike.controller.local;
 import miw.upm.es.klondike.controller.Error;
 import miw.upm.es.klondike.controller.FaceUpCardInStrightController;
 import miw.upm.es.klondike.controller.OperationControllerVisitor;
-import miw.upm.es.klondike.controller.PlaceCardControllerVisitor;
+import miw.upm.es.klondike.controller.MoveCardControllerVisitor;
 import miw.upm.es.klondike.model.Card;
 import miw.upm.es.klondike.model.Game;
 
@@ -14,7 +14,7 @@ public class LocalFaceUpInStrightController extends LocalPlaceCardController imp
 	}
 
 	@Override
-	public void accept(PlaceCardControllerVisitor colocateControllerVisitor) {
+	public void accept(MoveCardControllerVisitor colocateControllerVisitor) {
 		colocateControllerVisitor.visit(this);
 	}
 
