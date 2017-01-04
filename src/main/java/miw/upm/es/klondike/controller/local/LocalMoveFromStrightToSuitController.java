@@ -26,6 +26,9 @@ public class LocalMoveFromStrightToSuitController extends LocalPlaceCardControll
 	@Override
 	public Error move(int originStright) {
 		Card toPlace = super.getFirstCardOfStright(originStright);
+		if(toPlace == null){
+			return Error.MOVEMENT_NOT_PERMITED;
+		}
 		Card placed = super.getFirstCardFromSuit(toPlace.getSuit());
 		List<Card> toPlaceCards = new ArrayList<Card>();
 		List<Card> placedCards = new ArrayList<Card>();
